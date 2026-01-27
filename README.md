@@ -1,99 +1,98 @@
-Qintal Market Intelligence (QMI)
+<h1>Qintal Market Intelligence (QMI)</h1>
 
-Qintal Market Intelligence (QMI) is a data-driven market intelligence platform designed to help users understand financial markets through structured insights, trend analysis, and decision-support tools—without providing direct investment advice.
+<p>
+Qintal Market Intelligence (QMI) is an early-stage market intelligence platform focused on helping users
+<strong>understand financial markets through data, trends, and structured insights</strong>.
+The platform is designed for learning, analysis, and decision support — not for giving investment advice.
+</p>
 
-🚀 Vision
+<hr/>
 
-To make market intelligence accessible, transparent, and educational, enabling users to analyze market behavior, sector trends, and strategic scenarios with clarity and confidence.
+<h2>Why QMI Exists</h2>
+<p>
+Financial market data is widely available, but it is often fragmented, complex, or presented in ways that
+are difficult for individuals and small teams to interpret. Many tools are expensive, overly technical,
+or mixed with biased recommendations.
+</p>
 
-❓ Problem Statement
+<p>
+QMI aims to solve this by offering a <strong>clear, neutral, and educational view of market behavior</strong>,
+making it easier to explore trends, sectors, and strategic ideas in one place.
+</p>
 
-Modern financial markets generate massive amounts of data that are:
+<hr/>
 
-Difficult to interpret for individuals and small businesses
+<h2>What the Platform Focuses On</h2>
+<ul>
+  <li>Market and sector-level analysis</li>
+  <li>Trend identification and data signals (informational only)</li>
+  <li>Strategy simulation and scenario exploration</li>
+  <li>Readable dashboards and structured insights</li>
+  <li>Educational market intelligence for learning and research</li>
+</ul>
 
-Spread across fragmented tools
+<p><em>QMI does not provide buy/sell signals or financial advice.</em></p>
 
-Often locked behind expensive platforms
+<hr/>
 
-Frequently mixed with biased or advisory content
+<h2>Technology Stack</h2>
+<ul>
+  <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+  <li><strong>Backend & Services:</strong> Firebase (Authentication, Firestore, Hosting)</li>
+  <li><strong>Hosting:</strong> Firebase Hosting</li>
+  <li><strong>Version Control:</strong> Git & GitHub</li>
+</ul>
 
-QMI addresses this gap by providing clear, neutral, and data-backed market intelligence in a structured and easy-to-understand format.
+<hr/>
 
-🧠 What QMI Provides
+<h2>Project Status</h2>
+<p>
+QMI is currently in the <strong>Idea to Early MVP</strong> stage.
+</p>
 
-Stock & Sector Analysis (informational)
+<ul>
+  <li>Launching Soon website completed</li>
+  <li>Core platform structure planned</li>
+  <li>Initial dashboard and data models in development</li>
+</ul>
 
-Market Trend & Signal Tracking
+<hr/>
 
-Strategy Simulation Tools
+<h2>Team & Collaboration</h2>
+<p>
+QMI is being developed by a small, focused team working under defined roles:
+</p>
 
-Data-Driven Reports & Dashboards
+<ul>
+  <li>Founder – Vision, strategy, and platform direction</li>
+  <li>Website Developer – Frontend, UI, and Firebase integration</li>
+  <li>Researcher & Analyst – Market analysis and insight structure</li>
+  <li>Social Media Marketer – Brand presence and early growth</li>
+</ul>
 
-Educational Market Insights
+<hr/>
 
-⚠️ QMI does not provide buy/sell recommendations or financial advice.
+<h2>Repository & Usage</h2>
+<p>
+This repository is private and maintained by the founder. All code, designs, and logic are part of
+Qintal Market Intelligence’s intellectual property.
+</p>
 
-🛠️ Tech Stack
+<p>
+Contributions are role-based and reviewed before merging.
+</p>
 
-Frontend: HTML, CSS, JavaScript
+<hr/>
 
-Backend / Services: Firebase (Authentication, Firestore, Hosting)
+<h2>Disclaimer</h2>
+<p>
+Qintal Market Intelligence is an informational and educational platform only.
+It does not provide financial, investment, or trading advice.
+Users are responsible for their own decisions.
+</p>
 
-Hosting: Firebase Hosting
+<hr/>
 
-Version Control: Git & GitHub
-
-📌 Project Status
-
-Stage: Idea → Early MVP Development
-
-Current Focus:
-
-Launching Soon website
-
-Firebase setup
-
-Initial dashboard & data structure
-
-👥 Team Roles
-
-Founder: Vision, strategy, platform direction
-
-Website Developer: Frontend, dashboard, Firebase integration
-
-Researcher & Analyst: Market data analysis, insight generation
-
-Social Media Marketer: Brand growth and community engagement
-
-🔐 Repository & Contribution Policy
-
-This repository is private and owned by the founder.
-
-Contributors work under defined roles and scopes.
-
-All intellectual property belongs to Qintal Market Intelligence.
-
-No code or assets may be reused or distributed without permission.
-
-📜 Disclaimer
-
-Qintal Market Intelligence is an educational and informational platform only.
-It does not offer financial, investment, or trading advice.
-Users are responsible for their own investment decisions.
-
-📅 Roadmap (High-Level)
-
-Launching Soon Page
-
-Firebase Authentication & Database
-
-MVP Dashboard
-
-Market Intelligence Logic
-
-Internal Testing
-
-Public MVP Release
-
+<p style="color: #777; font-size: 0.9em;">
 © 2026 Qintal Market Intelligence. All rights reserved.
+</p>
