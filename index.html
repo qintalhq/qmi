@@ -3,194 +3,230 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qintal Market Intelligence - Launching March 13, 2026</title>
+    <title>Qintal Market Intelligence - Launching Soon</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Animated Background -->
     <div class="stars"></div>
-    <div class="animated-bg"></div>
-
     <div class="container">
-        <!-- Navigation -->
+        <!-- Navigation Bar -->
         <nav class="navbar">
-            <div class="nav-container">
-                <div class="logo-brand">QMI</div>
-                <ul class="nav-links">
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#launch">Launch</a></li>
-                </ul>
+            <div class="nav-content">
+                <div class="logo-small">
+                    <span class="logo-text">QMI</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#about" class="nav-link">About</a>
+                </div>
             </div>
         </nav>
 
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="hero-content">
-                <div class="logo-animation">
-                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
-                        <defs>
-                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="50" cy="50" r="48" fill="none" stroke="url(#grad1)" stroke-width="2"/>
-                        <circle cx="50" cy="50" r="38" fill="none" stroke="url(#grad1)" stroke-width="1" opacity="0.5"/>
-                        <text x="50" y="65" font-size="55" font-weight="bold" text-anchor="middle" fill="url(#grad1)">Q</text>
-                    </svg>
-                </div>
-                <h1 class="hero-title">Qintal Market Intelligence</h1>
-                <p class="hero-subtitle">Understand Financial Markets Through Data, Trends & Insights</p>
-                <p class="hero-description">A data-driven platform for learning market behavior without investment advice</p>
-            </div>
-        </section>
-
-        <!-- Countdown Timer Section -->
-        <section class="countdown-section" id="launch">
-            <h2>Launching In</h2>
-            <div class="countdown-container">
-                <div class="countdown-item">
-                    <span class="countdown-value" id="days">00</span>
-                    <span class="countdown-label">Days</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="hours">00</span>
-                    <span class="countdown-label">Hours</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="minutes">00</span>
-                    <span class="countdown-label">Minutes</span>
-                </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <span class="countdown-value" id="seconds">00</span>
-                    <span class="countdown-label">Seconds</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section class="features" id="features">
-            <h2 class="section-title">Platform Features</h2>
-            <p class="section-subtitle">Powerful tools for market intelligence</p>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <h3>Market Analysis</h3>
-                    <p>Deep sector and market-level analysis with structured insights</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📈</div>
-                    <h3>Trend Detection</h3>
-                    <p>Identify emerging patterns with data-driven recognition</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🎯</div>
-                    <h3>Decision Support</h3>
-                    <p>Intuitive dashboards for informed decision-making</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Educational Focus</h3>
-                    <p>Clear, neutral market intelligence for learning</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section class="about" id="about">
-            <div class="about-content">
-                <h2>Why QMI Exists</h2>
-                <p>
-                    Financial market data is fragmented and complex. QMI bridges this gap by providing 
-                    <span class="highlight">clear, neutral, and educational market intelligence</span> 
-                    for individuals and teams who want to understand market behavior.
-                </p>
-                <div class="about-benefits">
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Neutral, unbiased insights</span>
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-large">
+                    <div class="logo-icon">
+                        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+                            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#logoGradient)" stroke-width="2" opacity="0.3"/>
+                            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#logoGradient)" stroke-width="1.5" opacity="0.5"/>
+                            <text x="50" y="60" font-size="50" font-weight="bold" text-anchor="middle" fill="url(#logoGradient)" font-family="Arial, sans-serif">Q</text>
+                        </svg>
                     </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Educational, not advisory</span>
+                    <h1 class="brand-title">Qintal Market Intelligence</h1>
+                    <p class="brand-subtitle">Data-Driven Market Insights for the Modern Investor</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <section class="hero">
+                <div class="hero-text">
+                    <h2 class="hero-title">Understanding Markets Has Never Been Clearer</h2>
+                    <p class="hero-description">
+                        Explore structured insights, identify trends, and make informed decisions with our intelligent market analysis platform.
+                    </p>
+                </div>
+
+                <!-- Countdown Timer -->
+                <div class="timer-section">
+                    <div class="timer-header">
+                        <span class="timer-status">Launching In</span>
                     </div>
-                    <div class="benefit-item">
-                        <span class="benefit-icon">✓</span>
-                        <span>Structured data analysis</span>
+                    <div class="countdown-timer">
+                        <div class="timer-unit">
+                            <span class="timer-value" id="days">00</span>
+                            <span class="timer-label-small">Days</span>
+                        </div>
+                        <div class="timer-divider">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="timer-unit">
+                            <span class="timer-value" id="hours">00</span>
+                            <span class="timer-label-small">Hours</span>
+                        </div>
+                        <div class="timer-divider">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="timer-unit">
+                            <span class="timer-value" id="minutes">00</span>
+                            <span class="timer-label-small">Minutes</span>
+                        </div>
+                        <div class="timer-divider">
+                            <span class="dot"></span>
+                            <span class="dot"></span>
+                        </div>
+                        <div class="timer-unit">
+                            <span class="timer-value" id="seconds">00</span>
+                            <span class="timer-label-small">Seconds</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
 
-        <!-- CTA Section -->
-        <section class="cta">
-            <h2>Ready for Launch?</h2>
-            <p>Get notified when QMI goes live</p>
-            <button class="cta-button">Notify Me <span>→</span></button>
-        </section>
+                <!-- Features -->
+                <section class="features" id="features">
+                    <div class="section-header">
+                        <h3>Platform Capabilities</h3>
+                        <p class="section-subtitle">Powerful tools for market intelligence</p>
+                    </div>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-number">01</div>
+                            <h4>Market Analysis</h4>
+                            <p>Deep sector and market-level analysis with structured insights for comprehensive understanding</p>
+                            <div class="feature-line"></div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-number">02</div>
+                            <h4>Trend Detection</h4>
+                            <p>Identify emerging patterns and signals with data-driven trend recognition technology</p>
+                            <div class="feature-line"></div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-number">03</div>
+                            <h4>Decision Support</h4>
+                            <p>Intuitive dashboards and analytics designed for informed decision-making</p>
+                            <div class="feature-line"></div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-number">04</div>
+                            <h4>Educational Focus</h4>
+                            <p>Clear, neutral market intelligence for learning and advancing your financial knowledge</p>
+                            <div class="feature-line"></div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- About Section -->
+                <section class="about" id="about">
+                    <div class="about-container">
+                        <div class="about-text">
+                            <h3>Why QMI Exists</h3>
+                            <p>
+                                Financial market data is widely available, but often fragmented and complex. QMI bridges this gap by providing 
+                                <span class="highlight">clear, neutral, and educational market intelligence</span> for individuals and teams who want to understand market behavior without biased recommendations.
+                            </p>
+                            <div class="about-features">
+                                <div class="about-item">
+                                    <div class="check-icon">✓</div>
+                                    <span>Neutral, unbiased market insights</span>
+                                </div>
+                                <div class="about-item">
+                                    <div class="check-icon">✓</div>
+                                    <span>Educational, not advisory</span>
+                                </div>
+                                <div class="about-item">
+                                    <div class="check-icon">✓</div>
+                                    <span>Structured data analysis</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- CTA -->
+                <section class="cta-section">
+                    <h3>Ready to Transform Your Market Intelligence?</h3>
+                    <p>Get notified the moment QMI launches</p>
+                    <button class="notify-btn">
+                        <span class="btn-text">Notify Me at Launch</span>
+                        <span class="btn-arrow">→</span>
+                    </button>
+                </section>
+            </section>
+        </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2026 Qintal Market Intelligence. All rights reserved.</p>
-            <p class="disclaimer">Educational platform only. Not financial or investment advice.</p>
+            <div class="footer-content">
+                <p>&copy; 2026 Qintal Market Intelligence. All rights reserved.</p>
+                <p class="disclaimer">Educational and informational platform. Not financial or investment advice.</p>
+            </div>
         </footer>
     </div>
 
     <script>
-        // Create animated stars
+        // Animated background stars
         function createStars() {
             const starsContainer = document.querySelector('.stars');
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 50; i++) {
                 const star = document.createElement('div');
                 star.className = 'star';
-                star.style.width = Math.random() * 2.5 + 'px';
+                star.style.width = Math.random() * 2 + 'px';
                 star.style.height = star.style.width;
                 star.style.left = Math.random() * 100 + '%';
                 star.style.top = Math.random() * 100 + '%';
-                star.style.opacity = Math.random() * 0.7 + 0.2;
-                star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite`;
-                star.style.animationDelay = Math.random() * 2 + 's';
+                star.style.opacity = Math.random() * 0.7 + 0.3;
+                star.style.animationDelay = Math.random() * 3 + 's';
                 starsContainer.appendChild(star);
             }
         }
 
         // Countdown timer
         function updateCountdown() {
-            const launchDate = new Date('2026-03-13T00:00:00Z').getTime();
+            const targetDate = new Date('2026-03-13T00:00:00').getTime();
             const now = new Date().getTime();
-            const timeRemaining = launchDate - now;
+            const difference = targetDate - now;
 
-            if (timeRemaining > 0) {
-                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+            if (difference > 0) {
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
 
-                document.getElementById('days').textContent = String(days).padStart(2, '0');
-                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
             } else {
-                document.querySelector('.countdown-container').innerHTML = '<h3 style="color: #4CAF50; margin: 0;">🎉 We\'re Live!</h3>';
+                document.querySelector('.countdown-timer').innerHTML = 
+                    '<h3 style="font-size: 1.8rem; color: #4CAF50; margin: 0;">🎉 We\'re Live!</h3>';
             }
         }
 
-        // Smooth scroll navigation
+        // Smooth scroll for navigation
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                target && target.scrollIntoView({ behavior: 'smooth' });
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         });
 
-        // CTA Button
-        document.querySelector('.cta-button').addEventListener('click', function() {
-            alert('Thank you! We\'ll notify you when QMI launches on March 13, 2026.');
+        // Notify button
+        document.querySelector('.notify-btn').addEventListener('click', function() {
+            alert('Thank you for your interest! We\'ll notify you when QMI launches on March 13, 2026.');
         });
 
         // Initialize
