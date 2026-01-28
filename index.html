@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Qintal Market Intelligence - Launching Soon</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,6 +17,19 @@
         <!-- Header -->
         <header class="header">
             <div class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="45" stroke="url(#gradient1)" stroke-width="2"/>
+                        <path d="M30 50 Q50 30 70 50 Q50 70 30 50" fill="url(#gradient1)" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="8" fill="url(#gradient1)"/>
+                        <defs>
+                            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
                 <h1>QMI</h1>
                 <p class="tagline">Qintal Market Intelligence</p>
             </div>
@@ -28,7 +46,7 @@
 
                 <!-- Countdown Timer -->
                 <div class="timer-section">
-                    <p class="timer-label">Launching In</p>
+                    <p class="timer-label"><i class="far fa-clock"></i> Launching In</p>
                     <div class="countdown-timer">
                         <div class="timer-unit">
                             <span class="timer-value" id="days">00</span>
@@ -57,22 +75,30 @@
                     <h3>Platform Highlights</h3>
                     <div class="features-grid">
                         <div class="feature-card">
-                            <div class="feature-icon">📊</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
                             <h4>Market Analysis</h4>
                             <p>Deep sector and market-level analysis with structured insights</p>
                         </div>
                         <div class="feature-card">
-                            <div class="feature-icon">📈</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-trending-up"></i>
+                            </div>
                             <h4>Trend Identification</h4>
                             <p>Data signals and pattern recognition for informed decisions</p>
                         </div>
                         <div class="feature-card">
-                            <div class="feature-icon">🎯</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-crosshairs"></i>
+                            </div>
                             <h4>Decision Support</h4>
                             <p>Intuitive dashboards designed for learning and exploration</p>
                         </div>
                         <div class="feature-card">
-                            <div class="feature-icon">���</div>
+                            <div class="feature-icon">
+                                <i class="fas fa-graduation-cap"></i>
+                            </div>
                             <h4>Educational Focus</h4>
                             <p>Clear, neutral market intelligence for understanding financial trends</p>
                         </div>
@@ -82,21 +108,24 @@
                 <!-- CTA -->
                 <section class="cta-section">
                     <p class="cta-text">Be among the first to access cutting-edge market intelligence</p>
-                    <button class="notify-btn">Notify Me at Launch</button>
+                    <button class="notify-btn">
+                        <i class="fas fa-bell"></i> Notify Me at Launch
+                    </button>
                 </section>
             </section>
         </main>
 
         <!-- Footer -->
         <footer class="footer">
-            <p>&copy; 2026 Qintal Market Intelligence. All rights reserved.</p>
-            <p class="disclaimer">Informational and educational platform only. Not financial advice.</p>
+            <div class="footer-content">
+                <p><i class="fas fa-copyright"></i> 2026 Qintal Market Intelligence. All rights reserved.</p>
+                <p class="disclaimer"><i class="fas fa-info-circle"></i> Informational and educational platform only. Not financial advice.</p>
+            </div>
         </footer>
     </div>
 
     <script>
         function updateCountdown() {
-            // Target date: March 13, 2026
             const targetDate = new Date('2026-03-13T00:00:00').getTime();
             const now = new Date().getTime();
             const difference = targetDate - now;
@@ -113,18 +142,20 @@
                 document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
             } else {
                 document.querySelector('.countdown-timer').innerHTML = 
-                    '<p style="font-size: 2rem; color: #4CAF50;">🎉 We\'re Live!</p>';
+                    '<p class="live-message"><i class="fas fa-rocket"></i> We\'re Live!</p>';
             }
         }
 
-        // Update countdown immediately and then every second
         updateCountdown();
         setInterval(updateCountdown, 1000);
 
-        // Notify button functionality
         document.querySelector('.notify-btn').addEventListener('click', function() {
-            alert('Thank you for your interest! We\'ll notify you when QMI launches.');
-            // This can be connected to your email service later
+            this.innerHTML = '<i class="fas fa-check-circle"></i> Thank you for your interest!';
+            this.style.backgroundColor = '#4CAF50';
+            setTimeout(() => {
+                this.innerHTML = '<i class="fas fa-bell"></i> Notify Me at Launch';
+                this.style.backgroundColor = '';
+            }, 2500);
         });
     </script>
 </body>
