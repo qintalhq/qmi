@@ -3,75 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        h1 {
-            text-align: center;
-        }
-        #countdown {
-            font-size: 2em;
-            text-align: center;
-            margin: 20px 0;
-        }
-        .features {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            padding: 10px;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        .feature {
-            flex: 1 1 30%;
-            margin: 20px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            transition: transform 0.2s;
-        }
-        .feature:hover {
-            transform: scale(1.05);
-        }
-        @media (max-width: 768px) {
-            .feature {
-                flex: 1 1 100%;
-            }
-        }
-    </style>
+    <title>Qintal Market Intelligence - Launching March 13, 2026</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Countdown to March 13, 2026</h1>
-    <div id="countdown"></div>
-    <div class="features">
-        <div class="feature">Feature 1: Amazing Performance</div>
-        <div class="feature">Feature 2: User-Friendly Interface</div>
-        <div class="feature">Feature 3: 24/7 Support</div>
+    <!-- Animated Background -->
+    <div class="stars"></div>
+    <div class="animated-bg"></div>
+
+    <div class="container">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-brand">QMI</div>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#launch">Launch</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <div class="logo-animation">
+                    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" class="logo-svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#00d4ff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#0066cc;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="48" fill="none" stroke="url(#grad1)" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="38" fill="none" stroke="url(#grad1)" stroke-width="1" opacity="0.5"/>
+                        <text x="50" y="65" font-size="55" font-weight="bold" text-anchor="middle" fill="url(#grad1)">Q</text>
+                    </svg>
+                </div>
+                <h1 class="hero-title">Qintal Market Intelligence</h1>
+                <p class="hero-subtitle">Understand Financial Markets Through Data, Trends & Insights</p>
+                <p class="hero-description">A data-driven platform for learning market behavior without investment advice</p>
+            </div>
+        </section>
+
+        <!-- Countdown Timer Section -->
+        <section class="countdown-section" id="launch">
+            <h2>Launching In</h2>
+            <div class="countdown-container">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">00</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">00</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">00</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">00</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features" id="features">
+            <h2 class="section-title">Platform Features</h2>
+            <p class="section-subtitle">Powerful tools for market intelligence</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Market Analysis</h3>
+                    <p>Deep sector and market-level analysis with structured insights</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <h3>Trend Detection</h3>
+                    <p>Identify emerging patterns with data-driven recognition</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Decision Support</h3>
+                    <p>Intuitive dashboards for informed decision-making</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Educational Focus</h3>
+                    <p>Clear, neutral market intelligence for learning</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about" id="about">
+            <div class="about-content">
+                <h2>Why QMI Exists</h2>
+                <p>
+                    Financial market data is fragmented and complex. QMI bridges this gap by providing 
+                    <span class="highlight">clear, neutral, and educational market intelligence</span> 
+                    for individuals and teams who want to understand market behavior.
+                </p>
+                <div class="about-benefits">
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Neutral, unbiased insights</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Educational, not advisory</span>
+                    </div>
+                    <div class="benefit-item">
+                        <span class="benefit-icon">✓</span>
+                        <span>Structured data analysis</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta">
+            <h2>Ready for Launch?</h2>
+            <p>Get notified when QMI goes live</p>
+            <button class="cta-button">Notify Me <span>→</span></button>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Qintal Market Intelligence. All rights reserved.</p>
+            <p class="disclaimer">Educational platform only. Not financial or investment advice.</p>
+        </footer>
     </div>
+
     <script>
-        // Countdown Timer
-        const countdownElement = document.getElementById('countdown');
-        const countDownDate = new Date('March 13, 2026 00:00:00').getTime();
-        const x = setInterval(function() {
-            const now = new Date().getTime();
-            const distance = countDownDate - now;
-            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-            countdownElement.innerHTML = days + 'd ' + hours + 'h ' + minutes + 'm ' + seconds + 's ';
-            if (distance < 0) {
-                clearInterval(x);
-                countdownElement.innerHTML = 'Countdown Finished';
+        // Create animated stars
+        function createStars() {
+            const starsContainer = document.querySelector('.stars');
+            for (let i = 0; i < 60; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 2.5 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.opacity = Math.random() * 0.7 + 0.2;
+                star.style.animation = `twinkle ${Math.random() * 3 + 2}s infinite`;
+                star.style.animationDelay = Math.random() * 2 + 's';
+                starsContainer.appendChild(star);
             }
-        }, 1000);
+        }
+
+        // Countdown timer
+        function updateCountdown() {
+            const launchDate = new Date('2026-03-13T00:00:00Z').getTime();
+            const now = new Date().getTime();
+            const timeRemaining = launchDate - now;
+
+            if (timeRemaining > 0) {
+                const days = Math.floor(timeRemaining / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeRemaining % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeRemaining % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeRemaining % (1000 * 60)) / 1000);
+
+                document.getElementById('days').textContent = String(days).padStart(2, '0');
+                document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+                document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            } else {
+                document.querySelector('.countdown-container').innerHTML = '<h3 style="color: #4CAF50; margin: 0;">🎉 We\'re Live!</h3>';
+            }
+        }
+
+        // Smooth scroll navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target && target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // CTA Button
+        document.querySelector('.cta-button').addEventListener('click', function() {
+            alert('Thank you! We\'ll notify you when QMI launches on March 13, 2026.');
+        });
+
+        // Initialize
+        createStars();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
     </script>
 </body>
 </html>
