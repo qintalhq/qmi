@@ -1,131 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="style.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Qintal Market Intelligence - Launching Soon</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Qmi Documentation</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; color: #333; }
+        header { padding: 20px; background: #0077cc; color: white; text-align: center; }
+        h1 { font-size: 2.5em; margin: 0; }
+        nav { margin: 20px 0; }
+        nav a { color: white; margin: 0 15px; text-decoration: none; }
+        section { padding: 20px; margin: 20px; } 
+        footer { text-align: center; padding: 10px; background: #0077cc; color: white; position: relative; }
+        @media (prefers-reduced-motion: no-preference) {
+            h1 { animation: fadeIn 1s; }
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Header -->
-        <header class="header">
-            <div class="logo">
-                <h1>QMI</h1>
-                <p class="tagline">Qintal Market Intelligence</p>
-            </div>
-        </header>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <section class="hero">
-                <h2 class="hero-title">Understand Financial Markets Like Never Before</h2>
-                <p class="hero-subtitle">
-                    Data-driven insights, trend analysis, and decision-support tools 
-                    <span class="highlight">without investment advice</span>
-                </p>
-
-                <!-- Countdown Timer -->
-                <div class="timer-section">
-                    <p class="timer-label">Launching In</p>
-                    <div class="countdown-timer">
-                        <div class="timer-unit">
-                            <span class="timer-value" id="days">00</span>
-                            <span class="timer-label-small">Days</span>
-                        </div>
-                        <span class="timer-separator">:</span>
-                        <div class="timer-unit">
-                            <span class="timer-value" id="hours">00</span>
-                            <span class="timer-label-small">Hours</span>
-                        </div>
-                        <span class="timer-separator">:</span>
-                        <div class="timer-unit">
-                            <span class="timer-value" id="minutes">00</span>
-                            <span class="timer-label-small">Minutes</span>
-                        </div>
-                        <span class="timer-separator">:</span>
-                        <div class="timer-unit">
-                            <span class="timer-value" id="seconds">00</span>
-                            <span class="timer-label-small">Seconds</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Features -->
-                <section class="features">
-                    <h3>Platform Highlights</h3>
-                    <div class="features-grid">
-                        <div class="feature-card">
-                            <div class="feature-icon">📊</div>
-                            <h4>Market Analysis</h4>
-                            <p>Deep sector and market-level analysis with structured insights</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">📈</div>
-                            <h4>Trend Identification</h4>
-                            <p>Data signals and pattern recognition for informed decisions</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">🎯</div>
-                            <h4>Decision Support</h4>
-                            <p>Intuitive dashboards designed for learning and exploration</p>
-                        </div>
-                        <div class="feature-card">
-                            <div class="feature-icon">���</div>
-                            <h4>Educational Focus</h4>
-                            <p>Clear, neutral market intelligence for understanding financial trends</p>
-                        </div>
-                    </div>
-                </section>
-
-                <!-- CTA -->
-                <section class="cta-section">
-                    <p class="cta-text">Be among the first to access cutting-edge market intelligence</p>
-                    <button class="notify-btn">Notify Me at Launch</button>
-                </section>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer class="footer">
-            <p>&copy; 2026 Qintal Market Intelligence. All rights reserved.</p>
-            <p class="disclaimer">Informational and educational platform only. Not financial advice.</p>
-        </footer>
-    </div>
-
-    <script>
-        function updateCountdown() {
-            // Target date: March 13, 2026
-            const targetDate = new Date('2026-03-13T00:00:00').getTime();
-            const now = new Date().getTime();
-            const difference = targetDate - now;
-
-            if (difference > 0) {
-                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
-
-                document.getElementById('days').innerText = String(days).padStart(2, '0');
-                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
-                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
-                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
-            } else {
-                document.querySelector('.countdown-timer').innerHTML = 
-                    '<p style="font-size: 2rem; color: #4CAF50;">🎉 We\'re Live!</p>';
-            }
-        }
-
-        // Update countdown immediately and then every second
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-
-        // Notify button functionality
-        document.querySelector('.notify-btn').addEventListener('click', function() {
-            alert('Thank you for your interest! We\'ll notify you when QMI launches.');
-            // This can be connected to your email service later
-        });
-    </script>
+    <header>
+        <h1>Qmi Documentation</h1>
+        <nav>
+            <a href="#section1">Section 1</a>
+            <a href="#section2">Section 2</a>
+            <a href="#section3">Section 3</a>
+        </nav>
+    </header>
+    <section id="section1">
+        <h2>Section 1 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum dui a metus bibendum, et dignissim elit tincidunt.</p>
+    </section>
+    <section id="section2">
+        <h2>Section 2 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum dui a metus bibendum, et dignissim elit tincidunt.</p>
+    </section>
+    <section id="section3">
+        <h2>Section 3 Title</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum dui a metus bibendum, et dignissim elit tincidunt.</p>
+    </section>
+    <footer>
+        <p>&copy; 2026 Qmi Documentation</p>
+    </footer>
 </body>
 </html>
