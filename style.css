@@ -651,13 +651,7 @@
             margin-bottom: 2rem;
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
             transition: all 0.5s ease;
-        }
-.problem-icon {
-    width: 32px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+        
 }
 
 .problem-icon img {
