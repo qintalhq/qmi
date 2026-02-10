@@ -1,19 +1,22 @@
+/* ======================
+   Global Reset & Base
+====================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 body {
-  background: #0b0f19;
-  color: #eaeaea;
+  background: #0b1020;
+  color: #e5e7eb;
   line-height: 1.6;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
+  color: inherit;
 }
 
 .container {
@@ -22,7 +25,9 @@ a {
   margin: auto;
 }
 
-/* Header */
+/* ======================
+   Header / Navbar
+====================== */
 .header {
   background: #0f172a;
   border-bottom: 1px solid #1e293b;
@@ -32,24 +37,30 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 18px 0;
+  padding: 16px 0;
 }
 
 .logo {
   font-size: 20px;
   font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 .nav a {
   margin-left: 20px;
+  font-size: 14px;
   opacity: 0.8;
 }
 
-.nav a:hover {
+.nav a:hover,
+.nav a.active {
   opacity: 1;
+  color: #3b82f6;
 }
 
-/* Hero */
+/* ======================
+   Hero Section
+====================== */
 .hero {
   padding: 80px 0;
   text-align: center;
@@ -57,21 +68,28 @@ a {
 
 .hero h1 {
   font-size: 42px;
+  font-weight: 700;
   margin-bottom: 15px;
 }
 
 .hero p {
-  opacity: 0.85;
   max-width: 650px;
   margin: auto;
+  opacity: 0.85;
 }
 
-.btn-primary, .btn-secondary {
+/* ======================
+   Buttons
+====================== */
+.btn-primary,
+.btn-secondary {
   display: inline-block;
   margin-top: 25px;
   padding: 12px 28px;
-  border-radius: 8px;
+  border-radius: 10px;
   font-weight: 600;
+  font-size: 14px;
+  transition: 0.2s ease;
 }
 
 .btn-primary {
@@ -79,80 +97,179 @@ a {
   color: white;
 }
 
+.btn-primary:hover {
+  background: #1d4ed8;
+}
+
 .btn-secondary {
-  background: #1e293b;
+  background: transparent;
   border: 1px solid #334155;
 }
 
-/* Cards */
+.btn-secondary:hover {
+  background: #1e293b;
+}
+
+/* ======================
+   Research Cards
+====================== */
 .research {
   padding: 60px 0;
+}
+
+.section-subtitle {
+  margin-top: 6px;
+  opacity: 0.7;
 }
 
 .card-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 20px;
+  gap: 22px;
   margin-top: 30px;
 }
 
 .research-card {
   background: #0f172a;
-  padding: 20px;
-  border-radius: 12px;
   border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+  transition: 0.2s ease;
+}
+
+.research-card:hover {
+  transform: translateY(-4px);
+  border-color: #2563eb;
 }
 
 .research-card h3 {
-  margin-bottom: 5px;
+  font-size: 18px;
+  margin-bottom: 4px;
 }
 
 .ticker {
+  font-size: 13px;
   opacity: 0.7;
-  font-size: 14px;
 }
 
 .summary {
-  margin: 15px 0;
+  margin: 14px 0;
+  font-size: 14px;
   opacity: 0.85;
 }
 
-/* Search */
-.search-input {
-  width: 100%;
-  padding: 14px;
-  margin-top: 20px;
-  border-radius: 8px;
-  border: none;
-  background: #020617;
-  color: white;
-  border: 1px solid #1e293b;
+.research-card a {
+  font-size: 14px;
+  font-weight: 500;
+  color: #3b82f6;
 }
 
-/* Admin */
+/* ======================
+   Search Page
+====================== */
+.search-section {
+  padding: 60px 0 30px;
+}
+
+.search-input {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: #e5e7eb;
+  font-size: 14px;
+}
+
+.search-input::placeholder {
+  color: #94a3b8;
+}
+
+/* ======================
+   Stock Page
+====================== */
+.stock-hero {
+  padding: 60px 0 30px;
+}
+
+.stock-hero h1 {
+  font-size: 36px;
+  margin-bottom: 6px;
+}
+
+.meta {
+  font-size: 13px;
+  opacity: 0.7;
+}
+
+.stock-content {
+  padding: 40px 0;
+}
+
+.stock-content h2 {
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.stock-content ul {
+  margin-left: 18px;
+}
+
+.stock-content li {
+  margin-bottom: 6px;
+  opacity: 0.85;
+}
+
+.disclaimer {
+  margin-top: 30px;
+  font-size: 13px;
+  opacity: 0.6;
+}
+
+/* ======================
+   Admin Panel
+====================== */
+.admin {
+  padding: 60px 0;
+}
+
 .admin-form {
-  max-width: 600px;
+  max-width: 620px;
 }
 
 .admin-form label {
   display: block;
-  margin-top: 20px;
+  margin-top: 18px;
   margin-bottom: 6px;
+  font-size: 14px;
+  opacity: 0.85;
 }
 
 .admin-form input,
 .admin-form textarea {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: 1px solid #1e293b;
+  padding: 12px 14px;
+  border-radius: 10px;
   background: #020617;
-  color: white;
+  border: 1px solid #1e293b;
+  color: #e5e7eb;
+  font-size: 14px;
 }
 
-/* Footer */
+.admin-form textarea {
+  resize: vertical;
+}
+
+/* ======================
+   Footer
+====================== */
 .footer {
+  margin-top: 60px;
   padding: 25px 0;
   text-align: center;
+  font-size: 13px;
   opacity: 0.6;
+  border-top: 1px solid #1e293b;
 }
