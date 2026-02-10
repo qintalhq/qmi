@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Search Stocks | Qintal Market Intelligence</title>
+  <title>Search | Qintal MI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="header">
@@ -20,38 +21,14 @@
 
 <section class="search-section">
   <div class="container">
-    <h1>Search Market Research</h1>
-    <p>Find global stock research by company, ticker, or country</p>
-
-    <input 
-      type="text" 
-      placeholder="Search e.g. Apple, AAPL, India..." 
-      class="search-input"
-    >
+    <h1>Search Stocks</h1>
+    <input class="search-input" placeholder="Search company or ticker">
   </div>
 </section>
 
 <section class="research">
   <div class="container">
-    <h2>Recent Research</h2>
-
-    <div class="card-grid">
-
-      <div class="research-card">
-        <h3>Microsoft</h3>
-        <p class="ticker">NASDAQ: MSFT</p>
-        <p class="summary">Strong cloud growth with AI integration driving future margins.</p>
-        <a href="stock.html?id=msft">View Analysis →</a>
-      </div>
-
-      <div class="research-card">
-        <h3>Reliance Industries</h3>
-        <p class="ticker">NSE: RELIANCE</p>
-        <p class="summary">Diversified business with steady retail and telecom expansion.</p>
-        <a href="stock.html?id=reliance">View Analysis →</a>
-      </div>
-
-    </div>
+    <div class="card-grid" id="search-results"></div>
   </div>
 </section>
 
@@ -59,5 +36,6 @@
   <p>© 2026 Qintal Market Intelligence</p>
 </footer>
 
+<script type="module" src="js/search.js"></script>
 </body>
 </html>
