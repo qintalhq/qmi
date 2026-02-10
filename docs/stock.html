@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Stock Analysis | Qintal Market Intelligence</title>
+  <title>Stock Analysis | QMI</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
 <header class="header">
@@ -20,45 +21,27 @@
 
 <section class="stock-hero">
   <div class="container">
-    <h1>Apple Inc.</h1>
-    <p class="ticker">NASDAQ: AAPL · USA</p>
-    <p class="meta">Last Updated: 12 Feb 2026 · By Arham Khan</p>
+    <h1 id="company"></h1>
+    <p class="ticker" id="ticker"></p>
+    <p class="meta" id="meta"></p>
   </div>
 </section>
 
 <section class="stock-content">
   <div class="container">
-
     <h2>Business Overview</h2>
-    <p>
-      Apple is a global technology company with a strong ecosystem of hardware,
-      software, and services. Its recurring revenue from services adds stability.
-    </p>
+    <p id="overview"></p>
 
     <h2>Key Positives</h2>
-    <ul>
-      <li>Strong brand loyalty</li>
-      <li>High-margin services segment</li>
-      <li>Large cash reserves</li>
-    </ul>
+    <ul id="positives"></ul>
 
     <h2>Risks</h2>
-    <ul>
-      <li>High valuation</li>
-      <li>Dependence on iPhone sales</li>
-      <li>Regulatory pressure</li>
-    </ul>
+    <ul id="risks"></ul>
 
     <h2>QMI View</h2>
-    <p>
-      Apple remains a strong long-term company. Entry timing and valuation
-      discipline are important for new investors.
-    </p>
+    <p id="summary"></p>
 
-    <p class="disclaimer">
-      ⚠️ This is research, not financial advice.
-    </p>
-
+    <p class="disclaimer">⚠ Research only. Not financial advice.</p>
   </div>
 </section>
 
@@ -66,5 +49,6 @@
   <p>© 2026 Qintal Market Intelligence</p>
 </footer>
 
+<script type="module" src="js/stock.js"></script>
 </body>
 </html>
