@@ -1,1 +1,119 @@
-<!DOCTYPE html>\n<html lang="en">\n<head>\n    <meta charset="UTF-8">\n    <meta name="viewport" content="width=device-width, initial-scale=1.0">\n    <title>Countdown Timer</title>\n    <link rel="stylesheet" href="styles.css">\n    <style>\n        body { font-family: Arial, sans-serif; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; background-color: #f4f4f4; }\n        .countdown { font-size: 3em; margin-bottom: 20px; }\n        .features { margin: 20px; display: flex; flex-direction: column; align-items: center; }\n        .feature { background: #fff; padding: 20px; border-radius: 5px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin: 10px 0; width: 300px; text-align: center; transition: transform 0.3s; }\n        .feature:hover { transform: scale(1.05); }\n    </style>\n</head>\n<body>\n    <div class="countdown" id="countdown"></div>\n    <div class="features">\n        <div class="feature">Feature 1: Real-time Updates</div>\n        <div class="feature">Feature 2: User-Friendly Interface</div>\n        <div class="feature">Feature 3: Easy Integration</div>\n    </div>\n    <script>\n        // Countdown Timer\n        const countdownDate = new Date("2026-12-31T00:00:00Z").getTime();\n        const countdownFunction = setInterval(function() {\n            const now = new Date().getTime();\n            const distance = countdownDate - now;\n            const days = Math.floor(distance / (1000 * 60 * 60 * 24));\n            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));\n            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));\n            const seconds = Math.floor((distance % (1000 * 60)) / 1000);\n            document.getElementById("countdown").innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";\n            if (distance < 0) {\n                clearInterval(countdownFunction);\n                document.getElementById("countdown").innerHTML = "EXPIRED";\n            }\n        }, 1000);\n    </script>\n</body>\n</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Qintal Market Intelligence | Smart Stock Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Qintal Market Intelligence provides data-driven global stock research to help investors decide where and when to invest." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-flex">
+      <div class="logo">
+        <span>Qintal</span><strong>MI</strong>
+      </div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="search.html">Search</a>
+        <a href="#">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+      <h1>Global Stock Research.<br>Smarter Investment Decisions.</h1>
+      <p>
+        Qintal Market Intelligence delivers clear, unbiased, and data-driven stock research
+        to help investors decide where and when to invest.
+      </p>
+      <a href="search.html" class="btn-primary">Explore Research</a>
+    </div>
+  </section>
+
+  <!-- RECENT RESEARCH -->
+  <section class="research">
+    <div class="container">
+      <h2>Latest Market Research</h2>
+      <p class="section-subtitle">Recently published stock insights from global markets</p>
+
+      <div class="card-grid" id="research-list">
+        
+        <!-- Card 1 -->
+        <div class="research-card">
+          <div class="card-header">
+            <h3>Apple Inc.</h3>
+            <span class="badge">USA</span>
+          </div>
+          <p class="ticker">NASDAQ: AAPL</p>
+          <p class="summary">
+            Apple continues to show strong fundamentals supported by services growth
+            and ecosystem lock-in.
+          </p>
+          <a href="stock.html?id=1" class="card-link">Read Full Analysis →</a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="research-card">
+          <div class="card-header">
+            <h3>Tata Consultancy Services</h3>
+            <span class="badge">India</span>
+          </div>
+          <p class="ticker">NSE: TCS</p>
+          <p class="summary">
+            TCS remains a stable IT leader with consistent margins and long-term contracts.
+          </p>
+          <a href="stock.html?id=2" class="card-link">Read Full Analysis →</a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="research-card">
+          <div class="card-header">
+            <h3>NVIDIA</h3>
+            <span class="badge">Global</span>
+          </div>
+          <p class="ticker">NASDAQ: NVDA</p>
+          <p class="summary">
+            NVIDIA benefits from AI demand, but valuation risk remains a key factor.
+          </p>
+          <a href="stock.html?id=3" class="card-link">Read Full Analysis →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="container cta-box">
+      <h2>Building the Future of Market Intelligence</h2>
+      <p>
+        QMI is in active development. Join early and follow our journey as we build
+        a transparent, research-driven investment platform.
+      </p>
+      <a href="https://www.solvearn.net/api/v/10651/qintal-market-intelligence-qff51p" class="btn-secondary" target="_blank">
+        Join the Project
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer-flex">
+      <p>© 2026 Qintal Market Intelligence</p>
+      <p>Built for long-term investors</p>
+    </div>
+  </footer>
+
+</body>
+</html>
