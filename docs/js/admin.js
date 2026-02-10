@@ -1,29 +1,29 @@
 import { supabase } from "./supabase.js";
 
-// Form submission logic
 document.getElementById("admin-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Get form fields
-  const inputs = e.target.querySelectorAll("input, textarea");
-
-  // Prepare payload
   const payload = {
-    company: inputs[0].value,
-    ticker: inputs[1].value,
-    country: inputs[2].value,
-    overview: inputs[3].value,
-    positives: inputs[4].value.split(","),
-    risks: inputs[5].value.split(","),
-    summary: inputs[6].value,
+    company: document.getElementById("company").value,
+    ticker: document.getElementById("ticker").value,
+    country: document.getElementById("country").value,
+    overview: document.getElementById("overview").value,
+    positives: document.getElementById("positives").value.split(","),
+    risks: document.getElementById("risks").value.split(","),
+    summary: document.getElementById("summary").value,
   };
 
-  // Insert data into Supabase
-  const { data, error } = await supabase.from("research").insert([payload]);
+  const { data, error } = await supabase
+    .from("research")
+    .insert([payload])
+    .select();
+
+  console.log("DATA:", data);
+  console.log("ERROR:", error);
 
   if (error) {
-    alert("Error publishing research: " + error.message);
+    alert(error.message);
   } else {
-    alert("Research published successfully!");
+    alert("Published successfully");
   }
 });
