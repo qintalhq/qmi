@@ -1,54 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Stock Analysis | QMI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stock Research | QMI</title>
   <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header">
-  <div class="container header-flex">
-    <div class="logo">Qintal<strong>MI</strong></div>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="search.html">Search</a>
-    </nav>
-  </div>
+<header>
+  <h1 id="companyName">Apple Inc (AAPL)</h1>
+  <p class="price">$<span id="price">--</span></p>
 </header>
 
-<section class="stock-hero">
-  <div class="container">
-    <h1 id="company"></h1>
-    <p class="ticker" id="ticker"></p>
-    <p class="meta" id="meta"></p>
-  </div>
+<section class="meta">
+  <span id="country">Global</span>
+  <span id="updated">Last updated: --</span>
 </section>
 
-<section class="stock-content">
-  <div class="container">
-    <h2>Business Overview</h2>
-    <p id="overview"></p>
-
-    <h2>Key Positives</h2>
-    <ul id="positives"></ul>
-
-    <h2>Risks</h2>
-    <ul id="risks"></ul>
-
-    <h2>QMI View</h2>
-    <p id="summary"></p>
-
-    <p class="disclaimer">⚠ Research only. Not financial advice.</p>
-  </div>
+<section>
+  <h2>Overview</h2>
+  <p id="overview"></p>
 </section>
 
-<footer class="footer">
-  <p>© 2026 Qintal Market Intelligence</p>
-</footer>
+<section>
+  <h2>Positives</h2>
+  <ul id="positives"></ul>
+</section>
 
-<script type="module" src="js/stock.js"></script>
+<section>
+  <h2>Risks</h2>
+  <ul id="risks"></ul>
+</section>
+
+<section>
+  <h2>Analyst Summary</h2>
+  <p id="summary"></p>
+</section>
+
+<script src="js/stock.js"></script>
 </body>
 </html>
