@@ -1,41 +1,76 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Stock Research | QMI</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Stock Analysis | Qintal Market Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
-<header>
-  <h1 id="companyName">Apple Inc (AAPL)</h1>
-  <p class="price">$<span id="price">--</span></p>
-</header>
+  <!-- HEADER -->
+  <header class="stock-header">
+    <div class="left">
+      <h1 id="company">Loading…</h1>
+      <p class="market">
+        Market: <span id="country">Global</span>
+      </p>
+    </div>
 
-<section class="meta">
-  <span id="country">Global</span>
-  <span id="updated">Last updated: --</span>
-</section>
+    <div class="right price-box">
+      <div id="livePrice" class="price">$--</div>
+      <div id="priceChange" class="change">--%</div>
+    </div>
+  </header>
 
-<section>
-  <h2>Overview</h2>
-  <p id="overview"></p>
-</section>
+  <!-- META -->
+  <div class="meta">
+    <span id="updated">Last updated: --</span>
+  </div>
 
-<section>
-  <h2>Positives</h2>
-  <ul id="positives"></ul>
-</section>
+  <!-- CONTENT -->
+  <main class="content">
 
-<section>
-  <h2>Risks</h2>
-  <ul id="risks"></ul>
-</section>
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h2>Company Overview</h2>
+      <p id="overview">Loading overview…</p>
+    </section>
 
-<section>
-  <h2>Analyst Summary</h2>
-  <p id="summary"></p>
-</section>
+    <!-- GRID -->
+    <section class="grid">
 
-<script src="js/stock.js"></script>
+      <!-- POSITIVES -->
+      <div class="card">
+        <h3>Key Positives</h3>
+        <ul id="positives"></ul>
+      </div>
+
+      <!-- RISKS -->
+      <div class="card">
+        <h3>Key Risks</h3>
+        <ul id="risks"></ul>
+      </div>
+
+    </section>
+
+    <!-- ANALYST SUMMARY -->
+    <section class="card highlight">
+      <h2>Analyst Intelligence</h2>
+      <p id="summary"></p>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      © 2026 Qintal Market Intelligence · For research & educational purposes
+    </p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script type="module" src="js/stock.js"></script>
 </body>
 </html>
