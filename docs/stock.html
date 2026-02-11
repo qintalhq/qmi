@@ -1,76 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Stock Analysis | Qintal Market Intelligence</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Stock Analysis | QMI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header class="stock-header">
-    <div class="left">
-      <h1 id="companyName">Loading…</h1>
-      <p class="market">
-        Market: <span id="country">Global</span>
-      </p>
-    </div>
-
-    <div class="right price-box">
-      <div id="livePrice" class="price">$--</div>
-      <div id="priceChange" class="change">--%</div>
-    </div>
-  </header>
-
-  <!-- META -->
-  <div class="meta">
-    <span id="updated">Last updated: --</span>
+<header class="header">
+  <div class="container header-flex">
+    <div class="logo">Qintal<strong>MI</strong></div>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="search.html">Search</a>
+    </nav>
   </div>
+</header>
 
-  <!-- CONTENT -->
-  <main class="content">
+<section class="stock-hero">
+  <div class="container">
+    <h1 id="company"></h1>
+    <p class="ticker" id="ticker"></p>
+    <p class="meta" id="meta"></p>
+  </div>
+</section>
 
-    <!-- OVERVIEW -->
-    <section class="card">
-      <h2>Company Overview</h2>
-      <p id="overview">Loading overview…</p>
-    </section>
+<section class="stock-content">
+  <div class="container">
+    <h2>Business Overview</h2>
+    <p id="overview"></p>
 
-    <!-- GRID -->
-    <section class="grid">
+    <h2>Key Positives</h2>
+    <ul id="positives"></ul>
 
-      <!-- POSITIVES -->
-      <div class="card">
-        <h3>Key Positives</h3>
-        <ul id="positives"></ul>
-      </div>
+    <h2>Risks</h2>
+    <ul id="risks"></ul>
 
-      <!-- RISKS -->
-      <div class="card">
-        <h3>Key Risks</h3>
-        <ul id="risks"></ul>
-      </div>
+    <h2>QMI View</h2>
+    <p id="summary"></p>
 
-    </section>
+    <p class="disclaimer">⚠ Research only. Not financial advice.</p>
+  </div>
+</section>
 
-    <!-- ANALYST SUMMARY -->
-    <section class="card highlight">
-      <h2>Analyst Intelligence</h2>
-      <p id="summary"></p>
-    </section>
+<footer class="footer">
+  <p>© 2026 Qintal Market Intelligence</p>
+</footer>
 
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <p>
-      © 2026 Qintal Market Intelligence · For research & educational purposes
-    </p>
-  </footer>
-
-  <!-- SCRIPT -->
-  <script type="module" src="js/stock.js"></script>
+<script type="module" src="js/stock.js"></script>
 </body>
 </html>
