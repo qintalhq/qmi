@@ -1,55 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Stock Analysis | QMI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Stock Analysis | Qintal Market Intelligence</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<header class="header">
-  <div class="container header-flex">
-    <div class="logo">Qintal<strong>MI</strong></div>
-    <nav class="nav">
-      <a href="index.html">Home</a>
-      <a href="search.html">Search</a>
-    </nav>
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="header-left">
+      <h1 id="company">Loading…</h1>
+      <p class="meta-text">
+        Market: <span id="country">Global</span>
+      </p>
+    </div>
+  </header>
+
+  <!-- UPDATE INFO -->
+  <div class="update-bar">
+    <span id="updated">Last updated: --</span>
   </div>
-</header>
 
-<section>
-  <h2>Overview</h2>
-  <p id="overview">Loading...</p>
-</section>
+  <!-- MAIN CONTENT -->
+  <main class="content">
 
-<section>
-  <h2>Positives</h2>
-  <ul id="positives"></ul>
-</section>
+    <!-- OVERVIEW -->
+    <section class="card">
+      <h2>Company Overview</h2>
+      <p id="overview">
+        Loading company overview…
+      </p>
+    </section>
 
-<section>
-  <h2>Risks</h2>
-  <ul id="risks"></ul>
-</section>
+    <!-- POSITIVES & RISKS -->
+    <section class="two-column">
 
-<section>
-  <h2>Analyst Summary</h2>
-  <p id="summary">Loading...</p>
-</section>
+      <div class="card">
+        <h3>Key Positives</h3>
+        <ul id="positives"></ul>
+      </div>
 
-<p>
-  Market: <span id="country">--</span>
-</p>
+      <div class="card">
+        <h3>Key Risks</h3>
+        <ul id="risks"></ul>
+      </div>
 
-<p id="updated">Last updated: --</p>
+    </section>
 
+    <!-- ANALYST SUMMARY -->
+    <section class="card highlight">
+      <h2>Analyst Intelligence</h2>
+      <p id="summary">
+        Loading analyst summary…
+      </p>
+    </section>
 
-<footer class="footer">
-  <p>© 2026 Qintal Market Intelligence</p>
-</footer>
+  </main>
 
-<script type="module" src="js/stock.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>
+      © 2026 Qintal Market Intelligence · Research & Educational Use Only
+    </p>
+  </footer>
+
+  <!-- SCRIPT -->
+  <script type="module" src="js/stock.js"></script>
+
 </body>
 </html>
