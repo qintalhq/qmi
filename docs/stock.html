@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Stock Analysis | Qintal Market Intelligence</title>
+  <title>Stock Intelligence | Qintal Market Intelligence</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-  <!-- PAGE HEADER -->
+  <!-- HEADER -->
   <header class="page-header">
-    <div class="header-left">
+    <div class="container header-left">
       <h1 id="company">Loading…</h1>
       <p class="meta-text">
         Market: <span id="country">Global</span>
@@ -30,9 +30,7 @@
     <!-- OVERVIEW -->
     <section class="card">
       <h2>Company Overview</h2>
-      <p id="overview">
-        Loading company overview…
-      </p>
+      <p id="overview">Loading company overview…</p>
     </section>
 
     <!-- POSITIVES & RISKS -->
@@ -40,21 +38,25 @@
 
       <div class="card">
         <h3>Key Positives</h3>
-        <ul id="positives"></ul>
+        <ul id="positives">
+          <!-- injected by JS -->
+        </ul>
       </div>
 
       <div class="card">
         <h3>Key Risks</h3>
-        <ul id="risks"></ul>
+        <ul id="risks">
+          <!-- injected by JS -->
+        </ul>
       </div>
 
     </section>
 
-    <!-- ANALYST SUMMARY -->
+    <!-- ANALYST INTELLIGENCE -->
     <section class="card highlight">
       <h2>Analyst Intelligence</h2>
       <p id="summary">
-        Loading analyst summary…
+        Loading analyst insight…
       </p>
     </section>
 
@@ -63,12 +65,12 @@
   <!-- FOOTER -->
   <footer class="footer">
     <p>
-      © 2026 Qintal Market Intelligence · Research & Educational Use Only
+      © 2026 Qintal Market Intelligence · Research & Educational Purposes Only
     </p>
   </footer>
 
   <!-- SCRIPT -->
-  <script type="module" src="js/stock.js"></script>
+  <script type="module" src="stock.js"></script>
 
 </body>
 </html>
