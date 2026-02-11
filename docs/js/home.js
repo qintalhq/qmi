@@ -1,27 +1,36 @@
 import { supabase } from "./supabase.js";
+import { login, logout, getUser } from "./auth.js";
 
-async function loadHomeResearch() {
-  const { data, error } = await supabase
+const loginBox = document.getElementById("loginBox");
+const contentBox = document.getElementById("contentBox");
+const logoutBtn = document.getElementById("logoutBtn");
+
+document.getElementById("loginBtn").onclick = () => {
+  login(
+    document.getElementById("email").value,
+    document.getElementById("password").value
+  );
+};
+
+logoutBtn.onclick = logout;
+
+const user = await getUser();
+
+if (user) {
+  loginBox.style.display = "none";
+  contentBox.style.display = "block";
+  logoutBtn.style.display = "inline-block";
+
+  const { data } = await supabase
     .from("research")
-    .select("*")
+    .select("company,ticker,created_at")
     .order("created_at", { ascending: false })
-    .limit(6);
+    .limit(5);
 
-  if (error) return console.error(error);
-
-  const container = document.getElementById("research-list");
-  container.innerHTML = "";
-
-  data.forEach(stock => {
-    container.innerHTML += `
-      <div class="research-card">
-        <h3>${stock.company}</h3>
-        <p class="ticker">${stock.ticker}</p>
-        <p class="summary">${stock.summary}</p>
-        <a href="stock.html?id=${stock.id}">Read Analysis →</a>
-      </div>
-    `;
-  });
+  document.getElementById("recentResearch").innerHTML =
+    data.map(r =>
+      `<p><a href="stock.html?ticker=${r.ticker}">
+        ${r.company} (${r.ticker})
+      </a></p>`
+    ).join("");
 }
-
-loadHomeResearch();
