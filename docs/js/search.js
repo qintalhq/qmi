@@ -1,25 +1,15 @@
 import { supabase } from "./supabase.js";
 
-const input = document.querySelector(".search-input");
-
-input.addEventListener("input", async () => {
-  const query = input.value;
-
+async function search() {
   const { data } = await supabase
     .from("research")
-    .select("*")
-    .ilike("company", `%${query}%`);
+    .select("company,ticker")
+    .ilike("company", `%${q.value}%`);
 
-  const grid = document.querySelector(".card-grid");
-  grid.innerHTML = "";
-
-  data.forEach(stock => {
-    grid.innerHTML += `
-      <div class="research-card">
-        <h3>${stock.company}</h3>
-        <p class="ticker">${stock.ticker}</p>
-        <a href="stock.html?id=${stock.id}">View →</a>
-      </div>
-    `;
+  res.innerHTML = "";
+  data.forEach(d => {
+    res.innerHTML += `<p><a href="stock.html?ticker=${d.ticker}">${d.company}</a></p>`;
   });
-});
+}
+
+window.search = search;
