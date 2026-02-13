@@ -1,36 +1,23 @@
+import { requireAuth } from "./auth.js";
 import { supabase } from "./supabase.js";
-import { login, logout, getUser } from "./auth.js";
 
-const loginBox = document.getElementById("loginBox");
-const contentBox = document.getElementById("contentBox");
-const logoutBtn = document.getElementById("logoutBtn");
+requireAuth(load);
 
-document.getElementById("loginBtn").onclick = () => {
-  login(
-    document.getElementById("email").value,
-    document.getElementById("password").value
-  );
-};
-
-logoutBtn.onclick = logout;
-
-const user = await getUser();
-
-if (user) {
-  loginBox.style.display = "none";
-  contentBox.style.display = "block";
-  logoutBtn.style.display = "inline-block";
-
+async function load() {
   const { data } = await supabase
     .from("research")
-    .select("company,ticker,created_at")
-    .order("created_at", { ascending: false })
-    .limit(5);
+    .select("company,ticker,banner_url")
+    .order("created_at", { ascending: false });
 
-  document.getElementById("recentResearch").innerHTML =
-    data.map(r =>
-      `<p><a href="stock.html?ticker=${r.ticker}">
-        ${r.company} (${r.ticker})
-      </a></p>`
-    ).join("");
+  const el = document.getElementById("list");
+  el.innerHTML = "";
+
+  data.forEach(d => {
+    el.innerHTML += `
+      <div class="card">
+        <img src="${d.banner_url || ''}">
+        <h3>${d.company}</h3>
+        <a href="stock.html?ticker=${d.ticker}">Read</a>
+      </div>`;
+  });
 }
