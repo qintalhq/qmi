@@ -12,6 +12,20 @@ body {
   color: #e5e7eb;
   line-height: 1.6;
 }
+.tags {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.tag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: #1e293b;
+  color: #93c5fd;
+  border: 1px solid #334155;
+}
 
 a {
   color: #38bdf8;
@@ -238,4 +252,18 @@ button:hover {
     flex-direction: column;
     gap: 10px;
   }
+   .footer {
+  margin-top: 80px;
+  padding: 40px 20px;
+  border-top: 1px solid #1f2937;
+  background: #020617;
+  text-align: center;
+  font-size: 14px;
+  color: #9ca3af;
+}
+
+.footer p {
+  max-width: 700px;
+  margin: 8px auto;
+}
 }
