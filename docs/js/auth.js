@@ -1,12 +1,6 @@
 import { supabase } from "./supabase.js";
 
-await supabase.auth.signUp({
-  email,
-  password,
-  options: {
-    emailRedirectTo: "https://qintalhq.github.io/qmi/index.html"
-  }
-});
+
 export function requireAuth(callback) {
   supabase.auth.onAuthStateChange((_e, session) => {
     if (!session) {
