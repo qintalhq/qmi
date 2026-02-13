@@ -1,53 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Search | QMI</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Search</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="content">
-  <h1>Search Research</h1>
+<input id="q" placeholder="Search company">
+<button onclick="search()">Search</button>
+<div id="res"></div>
 
-  <input id="q" placeholder="Search by company or ticker" />
-  <button onclick="search()">Search</button>
-
-  <ul id="results"></ul>
-</div>
-
-<script type="module">
-import { supabase } from "/js/supabase.js";
-
-// AUTH CHECK
-const { data: { user } } = await supabase.auth.getUser();
-if (!user) {
-  window.location.href = "login.html";
-}
-
-async function search() {
-  const q = document.getElementById("q").value;
-
-  const { data } = await supabase
-    .from("research")
-    .select("company, ticker")
-    .ilike("company", `%${q}%`);
-
-  const res = document.getElementById("results");
-  res.innerHTML = "";
-
-  data.forEach(r => {
-    res.innerHTML += `
-      <li>
-        <a href="stock.html?ticker=${r.ticker}">
-          ${r.company} (${r.ticker})
-        </a>
-      </li>`;
-  });
-}
-
-window.search = search;
-</script>
-
+<script type="module" src="js/search.js"></script>
 </body>
 </html>
