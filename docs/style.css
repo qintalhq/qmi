@@ -1,210 +1,241 @@
-/* =========================
-   GLOBAL RESET & BASE
-========================= */
+/* --------------------
+   RESET & BASE
+-------------------- */
 * {
-  margin: 0;
-  padding: 0;
   box-sizing: border-box;
 }
 
-:root {
-  --bg-main: #0b0f14;
-  --bg-card: #111827;
-  --bg-soft: #0f172a;
-  --border: #1f2937;
-
-  --text-main: #e5e7eb;
-  --text-muted: #9ca3af;
-  --text-soft: #cbd5f5;
-
-  --accent: #38bdf8;
-  --positive: #22c55e;
-  --negative: #ef4444;
-}
-
 body {
-  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  background: var(--bg-main);
-  color: var(--text-main);
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0b0f19;
+  color: #e5e7eb;
   line-height: 1.6;
 }
 
-/* =========================
-   LAYOUT HELPERS
-========================= */
-.container,
-.content {
+a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+  border-radius: 8px;
+}
+
+/* --------------------
+   LAYOUT
+-------------------- */
+header {
+  background: #020617;
+  border-bottom: 1px solid #1f2937;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  font-size: 18px;
+  margin: 0;
+}
+
+header a {
+  margin-left: 16px;
+  font-size: 14px;
+}
+
+main,
+.container {
   max-width: 1100px;
-  margin: auto;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+/* --------------------
+   HERO (HOME)
+-------------------- */
+.hero {
+  text-align: center;
+  padding: 60px 20px 40px;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  color: #9ca3af;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* --------------------
+   GRID / CARDS
+-------------------- */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
+  padding: 16px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  border-color: #38bdf8;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin: 12px 0 8px;
+}
+
+.card a {
+  font-size: 14px;
+}
+
+/* --------------------
+   ARTICLE / STOCK PAGE
+-------------------- */
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 32px 20px;
+}
+
+.article h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.meta {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-bottom: 24px;
+}
+
+.article-img {
+  margin: 24px 0;
+}
+
+.article h2 {
+  margin-top: 40px;
+  font-size: 22px;
+}
+
+.article p {
+  margin: 16px 0;
+  color: #e5e7eb;
+}
+
+.article ul {
+  padding-left: 20px;
+}
+
+.article li {
+  margin: 8px 0;
+}
+
+/* --------------------
+   FORMS (LOGIN / ADMIN)
+-------------------- */
+.box,
+form,
+.admin {
+  max-width: 480px;
+  margin: 60px auto;
+  background: #020617;
+  border: 1px solid #1f2937;
+  border-radius: 12px;
   padding: 24px;
 }
 
-.page-header {
-  background: linear-gradient(180deg, #020617, #0b0f14);
-  border-bottom: 1px solid var(--border);
-  padding: 28px 24px;
+.box h2,
+.admin h2 {
+  margin-top: 0;
+  margin-bottom: 20px;
 }
 
-.header-left h1 {
-  font-size: 1.9rem;
-  font-weight: 600;
-}
-
-.meta-text {
-  margin-top: 6px;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.update-bar {
-  max-width: 1100px;
-  margin: auto;
-  padding: 12px 24px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-}
-
-/* =========================
-   CARDS & SECTIONS
-========================= */
-.card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 22px;
-  margin-bottom: 22px;
-}
-
-.card h2,
-.card h3 {
-  margin-bottom: 12px;
-  font-weight: 600;
-  color: var(--text-soft);
-}
-
-.card p {
-  color: var(--text-main);
-  font-size: 0.95rem;
-}
-
-.card.highlight {
-  border-left: 4px solid var(--accent);
-  background: linear-gradient(180deg, #0f172a, #111827);
-}
-
-/* =========================
-   LISTS (POSITIVES / RISKS)
-========================= */
-ul {
-  list-style: none;
-  margin-top: 10px;
-}
-
-ul li {
-  padding: 8px 0;
-  font-size: 0.92rem;
-  border-bottom: 1px solid var(--border);
-  color: var(--text-main);
-}
-
-ul li:last-child {
-  border-bottom: none;
-}
-
-/* =========================
-   TWO COLUMN GRID
-========================= */
-.two-column {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-@media (max-width: 768px) {
-  .two-column {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* =========================
-   PRICE / MARKET ELEMENTS
-========================= */
-.price-box {
-  text-align: right;
-}
-
-.price {
-  font-size: 1.6rem;
-  font-weight: 600;
-}
-
-.change {
-  font-size: 0.95rem;
-}
-
-.change.positive {
-  color: var(--positive);
-}
-
-.change.negative {
-  color: var(--negative);
-}
-
-/* =========================
-   SEARCH & INPUTS
-========================= */
 input,
 textarea,
-select {
+button {
   width: 100%;
-  background: var(--bg-soft);
-  border: 1px solid var(--border);
-  color: var(--text-main);
-  padding: 10px 12px;
-  border-radius: 6px;
-  margin-top: 6px;
+  background: #020617;
+  color: #e5e7eb;
+  border: 1px solid #1f2937;
+  border-radius: 8px;
+  padding: 12px;
+  margin-bottom: 14px;
+  font-size: 14px;
+}
+
+textarea {
+  min-height: 140px;
+  resize: vertical;
 }
 
 input::placeholder,
 textarea::placeholder {
-  color: var(--text-muted);
+  color: #6b7280;
 }
 
 button {
-  background: var(--accent);
+  background: #2563eb;
   border: none;
-  color: #020617;
-  padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 600;
   cursor: pointer;
+  font-weight: 500;
 }
 
 button:hover {
-  opacity: 0.9;
+  background: #1d4ed8;
 }
 
-/* =========================
-   ADMIN PANEL
-========================= */
-.admin-panel {
-  max-width: 900px;
-  margin: auto;
-  padding: 24px;
+/* --------------------
+   SEARCH PAGE
+-------------------- */
+.search-box {
+  max-width: 600px;
+  margin: 40px auto;
+  display: flex;
+  gap: 12px;
 }
 
-.admin-panel h1 {
-  margin-bottom: 18px;
+.search-box input {
+  flex: 1;
 }
 
-/* =========================
-   FOOTER
-========================= */
-.footer {
-  text-align: center;
-  padding: 30px 20px;
-  color: var(--text-muted);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  margin-top: 40px;
+/* --------------------
+   FOOTER / MESSAGES
+-------------------- */
+#msg {
+  font-size: 14px;
+  margin-top: 8px;
+  color: #9ca3af;
+}
+
+/* --------------------
+   MOBILE
+-------------------- */
+@media (max-width: 600px) {
+  .hero h2 {
+    font-size: 26px;
+  }
+
+  header {
+    flex-direction: column;
+    gap: 10px;
+  }
 }
