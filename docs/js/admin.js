@@ -1,22 +1,19 @@
+import { requireAuth } from "./auth.js";
 import { supabase } from "./supabase.js";
 
-document.querySelector("form").addEventListener("submit", async (e) => {
-  e.preventDefault();
+requireAuth(() => {});
 
-  const inputs = e.target.querySelectorAll("input, textarea");
+async function publish() {
+  const { error } = await supabase.from("research").insert([{
+    company: company.value,
+    ticker: ticker.value,
+    country: country.value,
+    banner_url: banner.value,
+    content: content.value,
+    sources: sources.value.split(",")
+  }]);
 
-  const payload = {
-    company: inputs[0].value,
-    ticker: inputs[1].value,
-    country: inputs[2].value,
-    overview: inputs[3].value,
-    positives: inputs[4].value,
-    risks: inputs[5].value,
-    summary: inputs[6].value,
-  };
+  msg.innerText = error ? error.message : "Published";
+}
 
-  const { error } = await supabase.from("research").insert([payload]);
-
-  if (error) alert("Error publishing");
-  else alert("Research published");
-});
+window.publish = publish;
