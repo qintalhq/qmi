@@ -1,47 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Qintal Market Intelligence</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>QMI</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="page-header">
-  <div class="container">
-    <h1>Qintal Market Intelligence</h1>
-    <p class="meta-text">Global Stock Research & Intelligence</p>
-  </div>
+<header>
+  <h1>Qintal Market Intelligence</h1>
+  <a href="search.html">Search</a>
+  <a href="admin.html">Admin</a>
 </header>
 
-<main class="content">
-  <section class="card">
-    <h2>Recent Research</h2>
-    <ul id="researchList"></ul>
-  </section>
-</main>
+<div id="list" class="grid"></div>
 
-<script type="module">
-import { supabase } from "./js/supabase.js";
-
-
-// LOAD DATA
-const { data } = await supabase
-  .from("research")
-  .select("company, ticker")
-  .order("created_at", { ascending: false })
-  .limit(10);
-
-const list = document.getElementById("researchList");
-data.forEach(r => {
-  list.innerHTML += `
-    <li>
-      <a href="stock.html?ticker=${r.ticker}">
-        ${r.company} (${r.ticker})
-      </a>
-    </li>`;
-});
-</script>
-
+<script type="module" src="js/home.js"></script>
 </body>
 </html>
