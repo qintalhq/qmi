@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Admin | QMI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+  <h2>Publish Research</h2>
+
+  <input id="company" placeholder="Company Name" />
+  <input id="ticker" placeholder="Ticker" />
+  <input id="country" placeholder="Country" />
+  <input id="banner" placeholder="Banner Image URL" />
+
+  <textarea id="content" placeholder="Full article (HTML allowed)"></textarea>
+  <textarea id="sources" placeholder="Sources (comma separated URLs)"></textarea>
+
+  <button onclick="publish()">Publish</button>
+  <p id="msg"></p>
+</div>
+
+<script type="module" src="js/admin.js"></script>
+</body>
+</html>
