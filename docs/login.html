@@ -1,62 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Login | QMI</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="admin-panel">
-  <h1>Qintal Market Intelligence</h1>
-  <p class="meta-text">Login or create an account</p>
-
-  <input id="email" type="email" placeholder="Email" />
-  <input id="password" type="password" placeholder="Password" />
-
+<div class="box">
+  <h2>Login / Register</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
   <button onclick="login()">Login</button>
-  <button onclick="register()" style="margin-top:10px;background:#111827;color:#38bdf8;border:1px solid #38bdf8;">
-    Create Account
-  </button>
-
+  <button onclick="register()">Register</button>
   <p id="msg"></p>
 </div>
 
 <script type="module">
-import { supabase } from "/js/supabase.js";
+import { supabase } from "./js/supabase.js";
 
 async function login() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
   const { error } = await supabase.auth.signInWithPassword({
-    email, password
+    email: email.value,
+    password: password.value
   });
-
-  document.getElementById("msg").innerText =
-    error ? error.message : "Login successful";
-  
-  if (!error) window.location.href = "index.html";
+  msg.innerText = error ? error.message : "Logged in";
+  if (!error) location.href = "index.html";
 }
 
 async function register() {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-
   const { error } = await supabase.auth.signUp({
-    email,
-    password
+    email: email.value,
+    password: password.value
   });
-
-  document.getElementById("msg").innerText =
-    error
-      ? error.message
-      : "Account created. Check email to verify.";
+  msg.innerText = error ? error.message : "Registered. Login now.";
 }
 
 window.login = login;
 window.register = register;
 </script>
-
 </body>
 </html>
