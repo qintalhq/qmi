@@ -1,54 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Admin | Qintal MI</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/style.css">
+  <title>Admin</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<header class="header">
-  <div class="container header-flex">
-    <div class="logo">Qintal<strong>MI</strong> Admin</div>
-  </div>
-</header>
-
-<section class="admin">
-  <div class="container">
-    <h1>Add Research</h1>
-
-    <form class="admin-form" id="admin-form">
-      <label>Company</label>
-      <input id="company" required>
-
-      <label>Ticker</label>
-      <input id="ticker" required>
-
-      <label>Country</label>
-      <input id="country" required>
-
-      <label>Overview</label>
-      <textarea id="overview" required></textarea>
-
-      <label>Positives (comma separated)</label>
-      <textarea id="positives" required></textarea>
-
-      <label>Risks (comma separated)</label>
-      <textarea id="risks" required></textarea>
-
-      <label>Summary</label>
-      <textarea id="summary" required></textarea>
-
-      <button class="btn-primary">Publish</button>
-    </form>
-  </div>
-</section>
-
-<footer class="footer">
-  <p>Admin Panel · QMI</p>
-</footer>
+<h2>Add Research</h2>
+<input id="company">
+<input id="ticker">
+<input id="country">
+<input id="banner">
+<textarea id="content"></textarea>
+<textarea id="sources"></textarea>
+<button onclick="publish()">Publish</button>
+<p id="msg"></p>
 
 <script type="module" src="js/admin.js"></script>
 </body>
