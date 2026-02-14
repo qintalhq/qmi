@@ -1,39 +1,121 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Login • Qintal Market Intelligence</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="login.css" />
-</head>
-<body>
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Inter, system-ui, -apple-system, sans-serif;
+}
 
-  <div class="login-wrapper">
-    <div class="login-card">
+/* BACKGROUND */
+body {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      <h1 class="logo">QMI</h1>
-      <p class="subtitle">Sign in to Qintal Market Intelligence</p>
+/* WRAPPER */
+.login-wrapper {
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
 
-      <form id="loginForm">
-        <label>Email</label>
-        <input type="email" id="email" placeholder="you@example.com" required />
+/* CARD */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background: rgba(15, 23, 42, 0.85);
+  border-radius: 14px;
+  padding: 32px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  border: 1px solid rgba(255,255,255,0.08);
+}
 
-        <label>Password</label>
-        <input type="password" id="password" placeholder="••••••••" required />
+/* LOGO */
+.logo {
+  text-align: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #38bdf8;
+  margin-bottom: 6px;
+}
 
-        <button type="submit">Login</button>
-      </form>
+.subtitle {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
 
-      <p class="footer-text">
-        Don’t have an account?
-        <a href="register.html">Register</a>
-      </p>
+/* FORM */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-      <p id="error" class="error"></p>
+label {
+  font-size: 13px;
+  color: #cbd5f5;
+}
 
-    </div>
-  </div>
+input {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 8px;
+  padding: 12px;
+  color: #e5e7eb;
+  font-size: 14px;
+}
 
-  <script type="module" src="/js/auth.js"></script>
-</body>
-</html>
+input:focus {
+  outline: none;
+  border-color: #38bdf8;
+}
+
+/* BUTTON */
+button {
+  margin-top: 10px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  border: none;
+  padding: 12px;
+  border-radius: 8px;
+  color: #020617;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 25px rgba(56,189,248,0.35);
+}
+
+/* FOOTER */
+.footer-text {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 13px;
+  color: #94a3b8;
+}
+
+.footer-text a {
+  color: #38bdf8;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+/* ERROR */
+.error {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 13px;
+  color: #f87171;
+}
