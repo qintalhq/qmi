@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login | QMI</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="box">
+  <h2>Login / Register</h2>
+  <input id="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Register</button>
+  <p id="msg"></p>
+</div>
+
+<script type="module">
+import { supabase } from "./js/supabase.js";
+
+async function login() {
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value
+  });
+  msg.innerText = error ? error.message : "Logged in";
+  if (!error) location.href = "index.html";
+}
+
+async function register() {
+  const { error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value
+  });
+  msg.innerText = error ? error.message : "Registered. Login now.";
+}
+
+window.login = login;
+window.register = register;
+</script>
+</body>
+</html>
