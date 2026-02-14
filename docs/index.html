@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QMI - Qintal Market Intelligence</title>
-  <link rel="stylesheet" href="tyle.css">
+  <link rel="stylesheet" href="stye.css">
   <style>
     * {
       margin: 0;
@@ -30,7 +30,7 @@
     }
 
     header .header-content {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -61,16 +61,53 @@
       color: #000000;
     }
 
+    /* Banner */
+    .banner {
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+      position: relative;
+      background: #f5f5f5;
+    }
+
+    .banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .banner-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 2rem;
+      color: white;
+    }
+
+    .banner-overlay h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .banner-overlay p {
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
     /* Hero Section */
     .hero {
       background: #fafafa;
       border-bottom: 1px solid #e5e5e5;
-      padding: 4rem 2rem;
+      padding: 3rem 2rem;
       text-align: center;
     }
 
     .hero-content {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
     }
 
@@ -82,122 +119,184 @@
     }
 
     .hero p {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #666666;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
     /* Container */
     .container {
-      max-width: 1200px;
+      max-width: 1400px;
       margin: 0 auto;
-      padding: 3rem 2rem;
+      padding: 4rem 2rem;
     }
 
     /* Section */
     section {
-      margin-bottom: 4rem;
+      margin-bottom: 5rem;
     }
 
-    section h3 {
-      font-size: 1.5rem;
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #000000;
+    }
+
+    .section-header h3 {
+      font-size: 1.75rem;
       font-weight: 700;
-      margin-bottom: 1.5rem;
-      padding-bottom: 0.75rem;
-      border-bottom: 1px solid #e5e5e5;
+      margin: 0;
+    }
+
+    .view-all {
+      color: #666666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .view-all:hover {
+      color: #000000;
     }
 
     /* Grid */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
     }
 
     /* Card */
     .card {
       display: block;
       border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      padding: 1.5rem;
+      border-radius: 8px;
+      overflow: hidden;
       background: #ffffff;
-      transition: all 0.2s;
+      transition: all 0.3s ease;
       text-decoration: none;
       color: inherit;
-      cursor: pointer;
+      height: 100%;
     }
 
     .card:hover {
       border-color: #000000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transform: translateY(-4px);
+    }
+
+    .card-content {
+      padding: 1.75rem;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: start;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      gap: 1rem;
     }
 
     .card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.3;
       margin-bottom: 0.25rem;
     }
 
     .card-ticker {
       font-size: 0.875rem;
-      font-weight: 600;
-      color: #666666;
+      font-weight: 700;
+      color: #000000;
       background: #f5f5f5;
-      padding: 0.25rem 0.75rem;
+      padding: 0.35rem 0.9rem;
       border-radius: 4px;
       white-space: nowrap;
+      border: 1px solid #e5e5e5;
     }
 
     .card-meta {
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 1rem;
-      font-size: 0.875rem;
+      gap: 0.75rem;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
       color: #666666;
     }
 
     .card-meta span {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .card-meta .dot {
+      width: 3px;
+      height: 3px;
+      background: #cccccc;
+      border-radius: 50%;
+      margin: 0 0.5rem;
     }
 
     .card-excerpt {
-      color: #000000;
-      font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 1rem;
+      color: #333333;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .card-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.25rem;
+      border-top: 1px solid #f0f0f0;
     }
 
     .card-date {
       font-size: 0.875rem;
       color: #999999;
-      padding-top: 1rem;
-      border-top: 1px solid #f0f0f0;
+    }
+
+    .card-arrow {
+      color: #000000;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    /* Featured Badge */
+    .featured-badge {
+      display: inline-block;
+      background: #000000;
+      color: #ffffff;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.75rem;
     }
 
     /* Loading */
     .loading {
       text-align: center;
-      padding: 3rem;
+      padding: 4rem 2rem;
       color: #666666;
     }
 
     .spinner {
       display: inline-block;
-      width: 40px;
-      height: 40px;
-      border: 3px solid #f0f0f0;
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f0f0f0;
       border-top-color: #000000;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     @keyframes spin {
@@ -207,24 +306,29 @@
     /* Empty State */
     .empty {
       text-align: center;
-      padding: 3rem;
+      padding: 4rem 2rem;
       color: #666666;
+    }
+
+    .empty h4 {
+      font-size: 1.25rem;
+      color: #000000;
+      margin-bottom: 0.5rem;
     }
 
     /* Footer */
     .footer {
       border-top: 1px solid #e5e5e5;
-      padding: 2rem;
+      padding: 3rem 2rem;
       text-align: center;
       background: #fafafa;
-      margin-top: 4rem;
     }
 
     .footer p {
       color: #666666;
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-      line-height: 1.5;
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+      line-height: 1.6;
     }
 
     .footer strong {
@@ -238,8 +342,16 @@
         padding: 1rem 1.5rem;
       }
 
+      .banner {
+        max-height: 250px;
+      }
+
+      .banner-overlay h2 {
+        font-size: 1.5rem;
+      }
+
       .hero {
-        padding: 3rem 1.5rem;
+        padding: 2.5rem 1.5rem;
       }
 
       .hero h2 {
@@ -247,11 +359,18 @@
       }
 
       .container {
-        padding: 2rem 1.5rem;
+        padding: 3rem 1.5rem;
       }
 
       .grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
       }
     }
   </style>
@@ -268,6 +387,9 @@
     </div>
   </header>
 
+  <!-- Banner -->
+  <div class="banner" id="banner"></div>
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -283,13 +405,19 @@
   <main class="container">
     <!-- Featured Research -->
     <section>
-      <h3>Featured Research</h3>
+      <div class="section-header">
+        <h3>Featured Research</h3>
+        <a href="search.html" class="view-all">View all →</a>
+      </div>
       <div class="grid" id="featured"></div>
     </section>
 
     <!-- Latest Research -->
     <section>
-      <h3>Latest Research</h3>
+      <div class="section-header">
+        <h3>Latest Research</h3>
+        <a href="search.html" class="view-all">View all →</a>
+      </div>
       <div class="grid" id="latest"></div>
     </section>
   </main>
@@ -310,26 +438,11 @@
     // Format date
     function formatDate(dateString) {
       const date = new Date(dateString);
-      const now = new Date();
-      const diffTime = Math.abs(now - date);
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-      
-      if (diffDays === 0) {
-        return 'Today';
-      } else if (diffDays === 1) {
-        return 'Yesterday';
-      } else if (diffDays < 7) {
-        return `${diffDays}d ago`;
-      } else if (diffDays < 30) {
-        const weeks = Math.floor(diffDays / 7);
-        return `${weeks}w ago`;
-      } else {
-        return date.toLocaleDateString('en-US', { 
-          month: 'short', 
-          day: 'numeric', 
-          year: 'numeric' 
-        });
-      }
+      return date.toLocaleDateString('en-US', { 
+        month: 'short', 
+        day: 'numeric', 
+        year: 'numeric' 
+      });
     }
 
     // Truncate text
@@ -339,79 +452,133 @@
       return text.substring(0, length) + '...';
     }
 
+    // Shuffle array
+    function shuffleArray(array) {
+      const shuffled = [...array];
+      for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+      }
+      return shuffled;
+    }
+
     // Create card HTML
-    function createCard(item) {
+    function createCard(item, isFeatured = false) {
       return `
         <a href="https://qmi.pages.dev/stock?ticker=${item.ticker}" class="card">
-          <div class="card-header">
-            <div>
-              <div class="card-title">${item.company}</div>
+          <div class="card-content">
+            ${isFeatured ? '<div class="featured-badge">Featured</div>' : ''}
+            <div class="card-header">
+              <div>
+                <div class="card-title">${item.company}</div>
+              </div>
+              <div class="card-ticker">${item.ticker}</div>
             </div>
-            <div class="card-ticker">${item.ticker}</div>
+            <div class="card-meta">
+              <span>${item.country}</span>
+              <span class="dot"></span>
+              <span>${formatDate(item.created_at)}</span>
+            </div>
+            <div class="card-excerpt">${truncate(item.research, 180)}</div>
+            <div class="card-footer">
+              <span class="card-date">Read analysis</span>
+              <span class="card-arrow">→</span>
+            </div>
           </div>
-          <div class="card-meta">
-            <span>${item.country}</span>
-          </div>
-          <div class="card-excerpt">${truncate(item.research, 150)}</div>
-          <div class="card-date">${formatDate(item.created_at)}</div>
         </a>
       `;
     }
 
-    // Load Featured Research
-    async function loadFeatured() {
-      const container = document.getElementById('featured');
+    // Load Banner
+    async function loadBanner() {
+      const container = document.getElementById('banner');
       
       try {
-        // Get the 3 most recent entries as "featured"
+        // Get the first entry with a banner_url
         const { data, error } = await supabase
           .from('research')
           .select('*')
-          .order('created_at', { ascending: false })
-          .limit(3);
+          .not('banner_url', 'is', null)
+          .limit(1)
+          .single();
+
+        if (error) throw error;
+
+        if (data && data.banner_url) {
+          container.innerHTML = `
+            <img src="${data.banner_url}" alt="${data.company}">
+            <div class="banner-overlay">
+              <h2>${data.company}</h2>
+              <p>${truncate(data.research, 120)}</p>
+            </div>
+          `;
+        } else {
+          container.style.display = 'none';
+        }
+
+      } catch (error) {
+        console.error('Error loading banner:', error);
+        container.style.display = 'none';
+      }
+    }
+
+    // Load Featured Research (Random)
+    async function loadFeatured() {
+      const container = document.getElementById('featured');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading featured research...</p></div>';
+      
+      try {
+        // Get all entries and randomly select 3
+        const { data, error } = await supabase
+          .from('research')
+          .select('*')
+          .order('created_at', { ascending: false });
 
         if (error) throw error;
 
         if (data && data.length > 0) {
-          container.innerHTML = data.map(item => createCard(item)).join('');
+          // Randomly select up to 3 entries
+          const randomEntries = shuffleArray(data).slice(0, 3);
+          container.innerHTML = randomEntries.map(item => createCard(item, true)).join('');
         } else {
-          container.innerHTML = '<div class="empty">No featured research yet</div>';
+          container.innerHTML = '<div class="empty"><h4>No featured research yet</h4><p>Check back soon for new analysis</p></div>';
         }
 
       } catch (error) {
         console.error('Error loading featured:', error);
-        container.innerHTML = '<div class="empty">Error loading featured research</div>';
+        container.innerHTML = '<div class="empty"><h4>Error loading featured research</h4></div>';
       }
     }
 
     // Load Latest Research
     async function loadLatest() {
       const container = document.getElementById('latest');
-      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading research...</p></div>';
+      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading latest research...</p></div>';
       
       try {
-        // Get latest 12 entries (excluding the 3 featured)
+        // Get latest 9 entries
         const { data, error } = await supabase
           .from('research')
           .select('*')
           .order('created_at', { ascending: false })
-          .range(3, 14); // Skip first 3 (featured), get next 12
+          .limit(9);
 
         if (error) throw error;
 
         if (data && data.length > 0) {
-          container.innerHTML = data.map(item => createCard(item)).join('');
+          container.innerHTML = data.map(item => createCard(item, false)).join('');
         } else {
-          container.innerHTML = '<div class="empty">No research available yet</div>';
+          container.innerHTML = '<div class="empty"><h4>No research available yet</h4><p>New analysis coming soon</p></div>';
         }
 
       } catch (error) {
         console.error('Error loading latest:', error);
-        container.innerHTML = '<div class="empty">Error loading research</div>';
+        container.innerHTML = '<div class="empty"><h4>Error loading research</h4></div>';
       }
     }
 
     // Load all on page load
+    loadBanner();
     loadFeatured();
     loadLatest();
   </script>
