@@ -815,13 +815,23 @@
   </div>
 
   <script type="module">
-    // ===================================
-    // SUPABASE CONFIGURATION
-    // ===================================
-    const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-    const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-    
-    const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+import { supabase } from "./js/supabase.js";
+
+async function login() {
+  const { error } = await supabase.auth.signInWithPassword({
+    email: email.value,
+    password: password.value
+  });
+  msg.innerText = error ? error.message : "Logged in";
+  if (!error) location.href = "index.html";
+}
+
+async function register() {
+  const { error } = await supabase.auth.signUp({
+    email: email.value,
+    password: password.value
+  });
+  msg.innerText = error ? error.message : "Registered. Activate it from email.";
 
     // ===================================
     // GLOBAL FUNCTIONS
