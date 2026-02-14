@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>QMI • Login</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="auth.css" />
+</head>
+<body>
+
+<div class="auth-box">
+  <h1>QMI</h1>
+  <p id="subtitle">Login to your account</p>
+
+  <div class="tabs">
+    <button id="loginTab" class="active">Login</button>
+    <button id="registerTab">Register</button>
+  </div>
+
+  <form id="authForm">
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="password" id="password" placeholder="Password" required />
+    <button type="submit" id="submitBtn">Login</button>
+  </form>
+
+  <p id="message"></p>
+</div>
+
+<script type="module" src="/js/auth.js"></script>
+</body>
+</html>
