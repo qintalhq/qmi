@@ -1,56 +1,419 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>QMI</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QMI - Qintal Market Intelligence</title>
+  <link rel="stylesheet" href="tyle.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 2rem;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    nav a {
+      color: #666666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav a:hover {
+      color: #000000;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: #fafafa;
+      border-bottom: 1px solid #e5e5e5;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #666666;
+      line-height: 1.6;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Section */
+    section {
+      margin-bottom: 4rem;
+    }
+
+    section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+
+    /* Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* Card */
+    .card {
+      display: block;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      padding: 1.5rem;
+      background: #ffffff;
+      transition: all 0.2s;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      border-color: #000000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .card-ticker {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #666666;
+      background: #f5f5f5;
+      padding: 0.25rem 0.75rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .card-meta {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: #666666;
+    }
+
+    .card-meta span {
+      display: inline-block;
+    }
+
+    .card-excerpt {
+      color: #000000;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .card-date {
+      font-size: 0.875rem;
+      color: #999999;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: #666666;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid #f0f0f0;
+      border-top-color: #000000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty {
+      text-align: center;
+      padding: 3rem;
+      color: #666666;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 2rem;
+      text-align: center;
+      background: #fafafa;
+      margin-top: 4rem;
+    }
+
+    .footer p {
+      color: #666666;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem 1.5rem;
+      }
+
+      .hero {
+        padding: 3rem 1.5rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .container {
+        padding: 2rem 1.5rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <h1>QMI</h1>
+      <nav>
+        <a href="search.html">Search</a>
+        <a href="login.html">Login</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <h1>Qintal Market Intelligence</h1>
-  <nav>
-    <a href="search.html">Search</a>
-    
-  </nav>
-</header>
-
-<section class="hero">
-  <h2>Global Stock Research & Intelligence</h2>
-  <p>
-    Independent, long-form analysis on companies worldwide.
-    Built for long-term investors and decision-makers.
-  </p>
-</section>
-
-<main class="container">
-
-  <!-- Featured -->
-  <section>
-    <h3>Featured Research</h3>
-    <div class="grid" id="featured">
-      <!-- You can manually pin 1–2 cards here or reuse JS later -->
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Global Stock Research & Intelligence</h2>
+      <p>
+        Independent, long-form analysis on companies worldwide.
+        Built for long-term investors and decision-makers.
+      </p>
     </div>
   </section>
 
-  <!-- Latest -->
-  <section style="margin-top:48px;">
-    <h3>Latest Research</h3>
-    <div id="list" class="grid"></div>
-  </section>
+  <!-- Main Container -->
+  <main class="container">
+    <!-- Featured Research -->
+    <section>
+      <h3>Featured Research</h3>
+      <div class="grid" id="featured"></div>
+    </section>
 
-</main>
+    <!-- Latest Research -->
+    <section>
+      <h3>Latest Research</h3>
+      <div class="grid" id="latest"></div>
+    </section>
+  </main>
 
-<footer class="footer">
-  <p><strong>Qintal Market Intelligence (QMI)</strong></p>
-  <p>
-    QMI provides independent equity research and market intelligence.
-    All content is for informational purposes only and not investment advice.
-  </p>
-  <p>© 2026 Qintal Market Intelligence</p>
-</footer>
+  <!-- Footer -->
+  <footer class="footer">
+    <p><strong>Qintal Market Intelligence (QMI)</strong></p>
+    <p>
+      QMI provides independent equity research and market intelligence.
+      All content is for informational purposes only and not investment advice.
+    </p>
+    <p>© 2026 Qintal Market Intelligence</p>
+  </footer>
 
-<div id="list" class="grid"></div>
+  <script type="module">
+    import { supabase } from "./js/supabase.js";
 
-<script type="module" src="js/home.js"></script>
+    // Format date
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      const now = new Date();
+      const diffTime = Math.abs(now - date);
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+      
+      if (diffDays === 0) {
+        return 'Today';
+      } else if (diffDays === 1) {
+        return 'Yesterday';
+      } else if (diffDays < 7) {
+        return `${diffDays}d ago`;
+      } else if (diffDays < 30) {
+        const weeks = Math.floor(diffDays / 7);
+        return `${weeks}w ago`;
+      } else {
+        return date.toLocaleDateString('en-US', { 
+          month: 'short', 
+          day: 'numeric', 
+          year: 'numeric' 
+        });
+      }
+    }
+
+    // Truncate text
+    function truncate(text, length) {
+      if (!text) return '';
+      if (text.length <= length) return text;
+      return text.substring(0, length) + '...';
+    }
+
+    // Create card HTML
+    function createCard(item) {
+      return `
+        <a href="https://qmi.pages.dev/stock?ticker=${item.ticker}" class="card">
+          <div class="card-header">
+            <div>
+              <div class="card-title">${item.company}</div>
+            </div>
+            <div class="card-ticker">${item.ticker}</div>
+          </div>
+          <div class="card-meta">
+            <span>${item.country}</span>
+          </div>
+          <div class="card-excerpt">${truncate(item.research, 150)}</div>
+          <div class="card-date">${formatDate(item.created_at)}</div>
+        </a>
+      `;
+    }
+
+    // Load Featured Research
+    async function loadFeatured() {
+      const container = document.getElementById('featured');
+      
+      try {
+        // Get the 3 most recent entries as "featured"
+        const { data, error } = await supabase
+          .from('research')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(3);
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          container.innerHTML = data.map(item => createCard(item)).join('');
+        } else {
+          container.innerHTML = '<div class="empty">No featured research yet</div>';
+        }
+
+      } catch (error) {
+        console.error('Error loading featured:', error);
+        container.innerHTML = '<div class="empty">Error loading featured research</div>';
+      }
+    }
+
+    // Load Latest Research
+    async function loadLatest() {
+      const container = document.getElementById('latest');
+      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading research...</p></div>';
+      
+      try {
+        // Get latest 12 entries (excluding the 3 featured)
+        const { data, error } = await supabase
+          .from('research')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .range(3, 14); // Skip first 3 (featured), get next 12
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          container.innerHTML = data.map(item => createCard(item)).join('');
+        } else {
+          container.innerHTML = '<div class="empty">No research available yet</div>';
+        }
+
+      } catch (error) {
+        console.error('Error loading latest:', error);
+        container.innerHTML = '<div class="empty">Error loading research</div>';
+      }
+    }
+
+    // Load all on page load
+    loadFeatured();
+    loadLatest();
+  </script>
 </body>
 </html>
