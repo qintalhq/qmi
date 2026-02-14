@@ -1,42 +1,175 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Login | QMI</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>QMI – Login / Register</title>
+
+  <!-- Supabase CDN (ONLY THIS) -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <link rel="stylesheet" href="login.css" />
 </head>
 <body>
 
-<div class="box">
-  <h2>Login / Register</h2>
-  <input id="email" placeholder="Email">
-  <input id="password" type="password" placeholder="Password">
-  <button onclick="login()">Login</button>
-  <button onclick="register()">Register</button>
-  <p id="msg"></p>
+<div class="auth-container">
+  <h1>QMI</h1>
+  <p class="subtitle">Quantitative Market Intelligence</p>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('login', this)">Login</button>
+    <button class="tab-btn" onclick="switchTab('signup', this)">Register</button>
+  </div>
+
+  <!-- Alerts -->
+  <div id="errorAlert" class="alert error">
+    <span id="errorMessage"></span>
+  </div>
+  <div id="successAlert" class="alert success">
+    <span id="successMessage"></span>
+  </div>
+
+  <!-- LOGIN -->
+  <form id="loginForm" class="auth-form active" onsubmit="handleLogin(event)">
+    <input type="email" id="loginEmail" placeholder="Email" required />
+    <input type="password" id="loginPassword" placeholder="Password" required />
+    <button id="loginBtn" type="submit">
+      <span id="loginBtnText">Sign In</span>
+    </button>
+  </form>
+
+  <!-- REGISTER -->
+  <form id="signupForm" class="auth-form" onsubmit="handleSignup(event)">
+    <input type="text" id="signupName" placeholder="Full Name" required />
+    <input type="email" id="signupEmail" placeholder="Email" required />
+    <input type="password" id="signupPassword" placeholder="Password" required />
+    <button id="signupBtn" type="submit">
+      <span id="signupBtnText">Create Account</span>
+    </button>
+  </form>
+
+  <button class="google-btn" onclick="handleGoogleAuth()">
+    Continue with Google
+  </button>
 </div>
 
-<script type="module">
-import { supabase } from "./js/supabase.js";
+<script>
+/* =========================
+   SUPABASE CONFIG
+========================= */
+const SUPABASE_URL = "https://swdsyfsidgjjkvdjsqkc.supabase.co";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InN3ZHN5ZnNpZGdqamt2ZGpzcWtjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA1MzcyNTUsImV4cCI6MjA4NjExMzI1NX0.DHRZSwv4DvAW1W4ZdUkuD_Vi_usv1N4IzgC07_fYF9A";
 
-async function login() {
+export const supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);;
+
+/* =========================
+   TAB SWITCH
+========================= */
+function switchTab(tab, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  document.getElementById(tab + 'Form').classList.add('active');
+
+  hideAlerts();
+}
+
+/* =========================
+   LOGIN
+========================= */
+async function handleLogin(e) {
+  e.preventDefault();
+  hideAlerts();
+
+  const email = loginEmail.value;
+  const password = loginPassword.value;
+
+  setLoading("loginBtn", "loginBtnText", "Signing in...", true);
+
   const { error } = await supabase.auth.signInWithPassword({
-    email: email.value,
-    password: password.value
+    email,
+    password
   });
-  msg.innerText = error ? error.message : "Logged in";
-  if (!error) location.href = "index.html";
+
+  if (error) {
+    showError(error.message);
+    setLoading("loginBtn", "loginBtnText", "Sign In", false);
+    return;
+  }
+
+  window.location.href = "index.html";
 }
 
-async function register() {
+/* =========================
+   SIGNUP
+========================= */
+async function handleSignup(e) {
+  e.preventDefault();
+  hideAlerts();
+
+  const name = signupName.value;
+  const email = signupEmail.value;
+  const password = signupPassword.value;
+
+  setLoading("signupBtn", "signupBtnText", "Creating...", true);
+
   const { error } = await supabase.auth.signUp({
-    email: email.value,
-    password: password.value
+    email,
+    password,
+    options: {
+      data: { full_name: name },
+      emailRedirectTo: "https://qmi.pages.dev/index.html"
+    }
   });
-  msg.innerText = error ? error.message : "Registered. Login now.";
+
+  if (error) {
+    showError(error.message);
+    setLoading("signupBtn", "signupBtnText", "Create Account", false);
+    return;
+  }
+
+  showSuccess("Check your email to verify your account.");
+  setLoading("signupBtn", "signupBtnText", "Create Account", false);
 }
 
-window.login = login;
-window.register = register;
+/* =========================
+   GOOGLE LOGIN
+========================= */
+async function handleGoogleAuth() {
+  await supabase.auth.signInWithOAuth({
+    provider: "google",
+    options: {
+      redirectTo: "https://qmi.pages.dev/index.html"
+    }
+  });
+}
+
+/* =========================
+   HELPERS
+========================= */
+function showError(msg) {
+  errorMessage.textContent = msg;
+  errorAlert.style.display = "block";
+}
+
+function showSuccess(msg) {
+  successMessage.textContent = msg;
+  successAlert.style.display = "block";
+}
+
+function hideAlerts() {
+  errorAlert.style.display = "none";
+  successAlert.style.display = "none";
+}
+
+function setLoading(btnId, textId, text, loading) {
+  const btn = document.getElementById(btnId);
+  const txt = document.getElementById(textId);
+  btn.disabled = loading;
+  txt.textContent = text;
+}
 </script>
+
 </body>
 </html>
