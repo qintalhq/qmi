@@ -4,30 +4,164 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login | QMI</title>
-  <link rel="stylesheet" href="login.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #ffffff;
+      color: #0a0e27;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .login-page {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
 
+    .login-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 3rem;
+      max-width: 450px;
+      width: 100%;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-card h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .login-card .subtitle {
+      text-align: center;
+      color: var(--gray);
+      margin-bottom: 2rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 2rem;
+      background: var(--light-gray);
+      padding: 0.4rem;
+      border-radius: 10px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 0.75rem;
+      background: transparent;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    .tab.active {
+      background: var(--white);
+      color: var(--accent);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      color: var(--primary);
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.875rem;
+      border: 2px solid var(--light-gray);
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: border 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 1rem;
+      background: linear-gradient(135deg, var(--accent), var(--accent-light));
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-family: inherit;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+    }
+
+    .message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      display: none;
+      text-align: center;
+    }
+
+    .message.error {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--danger);
+      border: 1px solid var(--danger);
+    }
+
+    .message.success {
+      background: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+      border: 1px solid var(--success);
+    }
+
+    .message.show {
+      display: block;
+    }
+
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-  <!-- Header -->
-  <div class="header">
-    <div class="header-content">
-      <a href="index.html" class="logo">QMI</a>
-      <a href="search.html" class="header-link">Search</a>
-    </div>
-  </div>
+  <div class="login-page">
+    <div class="login-card">
+      <h1>Welcome to QMI</h1>
+      <p class="subtitle">Sign in to access research</p>
 
-  <!-- Main Container -->
-  <div class="container">
-    <div class="box">
-      <div class="box-header">
-        <h2>Qintal Market Intelligence</h2>
-        <p class="box-subtitle">Sign in to access research and analysis</p>
-      </div>
+      <div id="msg" class="message"></div>
 
-      <!-- Tabs -->
       <div class="tabs">
         <button class="tab active" onclick="switchTab('login')">Sign In</button>
-        <button class="tab" onclick="switchTab('register')">Sign Up</button>
+        <button class="tab" onclick="switchTab('signup')">Sign Up</button>
       </div>
 
       <!-- Login Form -->
@@ -35,186 +169,100 @@
         <form onsubmit="event.preventDefault(); login();">
           <div class="form-group">
             <label>Email</label>
-            <input 
-              id="loginEmail" 
-              type="email" 
-              placeholder="you@example.com" 
-              required
-              autocomplete="email"
-            >
+            <input id="loginEmail" type="email" placeholder="you@example.com" required>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input 
-              id="loginPassword" 
-              type="password" 
-              placeholder="Enter your password" 
-              required
-              minlength="6"
-              autocomplete="current-password"
-            >
+            <input id="loginPassword" type="password" placeholder="Enter password" required minlength="6">
           </div>
-          <button type="submit" id="loginBtn">
-            <span id="loginBtnText">Sign In</span>
-          </button>
+          <button type="submit">Sign In</button>
         </form>
       </div>
 
-      <!-- Register Form -->
-      <div id="registerForm" class="form-container">
-        <form onsubmit="event.preventDefault(); register();">
+      <!-- Signup Form -->
+      <div id="signupForm" class="form-container">
+        <form onsubmit="event.preventDefault(); signup();">
           <div class="form-group">
             <label>Email</label>
-            <input 
-              id="registerEmail" 
-              type="email" 
-              placeholder="you@example.com" 
-              required
-              autocomplete="email"
-            >
+            <input id="signupEmail" type="email" placeholder="you@example.com" required>
           </div>
           <div class="form-group">
             <label>Password</label>
-            <input 
-              id="registerPassword" 
-              type="password" 
-              placeholder="At least 6 characters" 
-              required
-              minlength="6"
-              autocomplete="new-password"
-            >
+            <input id="signupPassword" type="password" placeholder="At least 6 characters" required minlength="6">
           </div>
-          <button type="submit" id="registerBtn">
-            <span id="registerBtnText">Create Account</span>
-          </button>
+          <button type="submit">Create Account</button>
         </form>
       </div>
 
-      <!-- Message -->
-      <p id="msg"></p>
-
-      <!-- Extra Links -->
-      <div class="extra-links">
-        By continuing, you agree to QMI's <a href="#">Terms of Service</a>
-      </div>
+      <p style="text-align:center;margin-top:1.5rem;color:var(--gray);font-size:0.9rem;">
+        By continuing, you agree to QMI's Terms of Service
+      </p>
     </div>
-  </div>
-
-  <!-- Footer -->
-  <div class="footer">
-    <p><strong>Qintal Market Intelligence (QMI)</strong></p>
-    <p>QMI provides independent equity research and market intelligence.</p>
-    <p>All content is for informational purposes only and not investment advice.</p>
-    <p style="margin-top: 1rem;">© 2026 Qintal Market Intelligence</p>
   </div>
 
   <script type="module">
     import { supabase } from "./js/supabase.js";
 
-    // Tab Switching
     window.switchTab = function(tab) {
-      // Update tabs
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
       event.target.classList.add('active');
 
-      // Update forms
       document.querySelectorAll('.form-container').forEach(f => f.classList.remove('active'));
       if (tab === 'login') {
         document.getElementById('loginForm').classList.add('active');
       } else {
-        document.getElementById('registerForm').classList.add('active');
+        document.getElementById('signupForm').classList.add('active');
       }
 
-      // Clear message
       hideMessage();
     };
 
-    // Login Function
     window.login = async function() {
       const email = document.getElementById('loginEmail').value;
       const password = document.getElementById('loginPassword').value;
-      
-      setLoading('loginBtn', 'loginBtnText', true);
-      hideMessage();
 
-      const { error } = await supabase.auth.signInWithPassword({
-        email: email,
-        password: password
-      });
+      try {
+        const { error } = await supabase.auth.signInWithPassword({ email, password });
+        if (error) throw error;
 
-      if (error) {
-        showMessage(error.message, 'error');
-        setLoading('loginBtn', 'loginBtnText', false);
-      } else {
         showMessage('Logged in successfully!', 'success');
-        setTimeout(() => {
-          location.href = "index.html";
-        }, 500);
-      }
-    };
-
-    // Register Function
-    window.register = async function() {
-      const email = document.getElementById('registerEmail').value;
-      const password = document.getElementById('registerPassword').value;
-      
-      setLoading('registerBtn', 'registerBtnText', true);
-      hideMessage();
-
-      const { error } = await supabase.auth.signUp({
-        email: email,
-        password: password
-      });
-
-      if (error) {
+        setTimeout(() => location.href = 'index.html', 500);
+      } catch (error) {
         showMessage(error.message, 'error');
-        setLoading('registerBtn', 'registerBtnText', false);
-      } else {
-        showMessage('Registered! Please check your email to verify.', 'success');
-        setLoading('registerBtn', 'registerBtnText', false);
-        
-        // Clear form
-        document.getElementById('registerEmail').value = '';
-        document.getElementById('registerPassword').value = '';
-
-        // Switch to login tab after 2 seconds
-        setTimeout(() => {
-          document.querySelectorAll('.tab')[0].click();
-        }, 2000);
       }
     };
 
-    // Helper Functions
+    window.signup = async function() {
+      const email = document.getElementById('signupEmail').value;
+      const password = document.getElementById('signupPassword').value;
+
+      try {
+        const { error } = await supabase.auth.signUp({ email, password });
+        if (error) throw error;
+
+        showMessage('Account created! Please check your email.', 'success');
+        document.getElementById('signupEmail').value = '';
+        document.getElementById('signupPassword').value = '';
+
+        setTimeout(() => document.querySelectorAll('.tab')[0].click(), 2000);
+      } catch (error) {
+        showMessage(error.message, 'error');
+      }
+    };
+
     function showMessage(text, type) {
       const msg = document.getElementById('msg');
       msg.textContent = text;
-      msg.className = `show ${type}`;
+      msg.className = `message ${type} show`;
     }
 
     function hideMessage() {
-      const msg = document.getElementById('msg');
-      msg.className = '';
-      msg.textContent = '';
+      document.getElementById('msg').className = 'message';
     }
 
-    function setLoading(btnId, textId, isLoading) {
-      const btn = document.getElementById(btnId);
-      const text = document.getElementById(textId);
-      
-      btn.disabled = isLoading;
-      if (isLoading) {
-        text.innerHTML = '<span class="spinner"></span> Loading...';
-      } else {
-        text.textContent = btnId === 'loginBtn' ? 'Sign In' : 'Create Account';
-      }
-    }
-
-    // Check if user is already logged in
     async function checkAuth() {
       const { data: { session } } = await supabase.auth.getSession();
-      if (session) {
-        location.href = "index.html";
-      }
+      if (session) location.href = 'index.html';
     }
 
     checkAuth();
