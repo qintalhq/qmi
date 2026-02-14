@@ -1,33 +1,413 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stock | QMI</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="syle.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.7;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1.25rem 2rem;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    header a {
+      color: #666666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    header a:hover {
+      color: #000000;
+    }
+
+    /* Article */
+    .article {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 3rem 2rem 4rem;
+    }
+
+    /* Title Section */
+    #company {
+      font-size: 2.75rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+
+    .meta {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      color: #666666;
+      font-size: 0.95rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .meta .ticker {
+      background: #000000;
+      color: #ffffff;
+      padding: 0.35rem 0.9rem;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 0.875rem;
+    }
+
+    .meta .dot {
+      width: 3px;
+      height: 3px;
+      background: #cccccc;
+      border-radius: 50%;
+    }
+
+    /* Banner Image */
+    #banner {
+      width: 100%;
+      max-height: 450px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+      display: none;
+    }
+
+    #banner.show {
+      display: block;
+    }
+
+    /* Disclaimer */
+    .disclaimer {
+      background: #fffbeb;
+      border: 1px solid #fbbf24;
+      border-left: 4px solid #fbbf24;
+      padding: 1.25rem 1.5rem;
+      border-radius: 6px;
+      margin-bottom: 3rem;
+    }
+
+    .disclaimer strong {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    .disclaimer p {
+      color: #666666;
+      font-size: 0.95rem;
+      margin: 0;
+    }
+
+    /* Content */
+    #content {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      color: #1a1a1a;
+    }
+
+    #content h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-top: 3rem;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid #000000;
+    }
+
+    #content h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    #content p {
+      margin-bottom: 1.25rem;
+    }
+
+    #content ul, #content ol {
+      margin-bottom: 1.5rem;
+      padding-left: 1.75rem;
+    }
+
+    #content li {
+      margin-bottom: 0.75rem;
+    }
+
+    #content strong {
+      font-weight: 600;
+      color: #000000;
+    }
+
+    #content a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    #content a:hover {
+      color: #666666;
+    }
+
+    /* Sources */
+    .sources-section {
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .sources-section h3 {
+      font-size: 1.35rem;
+      font-weight: 600;
+      margin-bottom: 1.25rem;
+    }
+
+    #sources {
+      list-style: none;
+      padding: 0;
+    }
+
+    #sources li {
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    #sources a {
+      color: #000000;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    #sources a:hover {
+      color: #666666;
+    }
+
+    #sources a::before {
+      content: "→";
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #666666;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f0f0f0;
+      border-top-color: #000000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: #fafafa;
+    }
+
+    footer p {
+      color: #666666;
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      #company {
+        font-size: 2rem;
+      }
+
+      .article {
+        padding: 2rem 1.5rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <a href="index.html">← Back to Research</a>
-</header>
+  <!-- Header -->
+  <header>
+    <div class="header-content">
+      <a href="index.html">← Back to Research</a>
+    </div>
+  </header>
 
-<article class="article">
+  <!-- Article -->
+  <article class="article">
+    <!-- Title & Meta -->
+    <h1 id="company">Loading...</h1>
+    <p class="meta" id="meta"></p>
 
-  <h1 id="company"></h1>
-  <p class="meta" id="meta"></p>
+    <!-- Banner Image -->
+    <img id="banner" alt="" />
 
-  <img id="banner" class="article-img" />
+    <!-- Disclaimer -->
+    <div class="disclaimer">
+      <p><strong>Disclaimer:</strong> This content is for informational and educational purposes only and does not constitute investment advice, financial advice, trading advice, or any other sort of advice. You should not treat any of the content as such. QMI does not recommend that any securities should be bought, sold, or held by you. Conduct your own due diligence and consult your financial advisor before making any investment decisions.</p>
+    </div>
 
+    <!-- Content (HTML from Supabase) -->
+    <section id="content"></section>
 
+    <!-- Sources -->
+    <section class="sources-section">
+      <h3>Sources</h3>
+      <ul id="sources"></ul>
+    </section>
+  </article>
 
-  <section id="content"></section>
+  <!-- Footer -->
+  <footer>
+    <p><strong>Qintal Market Intelligence (QMI)</strong></p>
+    <p>All content is for informational purposes only and not investment advice.</p>
+    <p>© 2026 Qintal Market Intelligence</p>
+  </footer>
 
+  <script type="module">
+    import { supabase } from "./js/supabase.js";
 
+    // Get ticker from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const ticker = urlParams.get('ticker');
 
-  <section style="margin-top:60px;">
-    <h3>Sources</h3>
-    <ul id="sources"></ul>
-  </section>
+    if (!ticker) {
+      document.querySelector('.article').innerHTML = `
+        <div class="loading">
+          <h2>No ticker provided</h2>
+          <p><a href="index.html">Go back to home</a></p>
+        </div>
+      `;
+    } else {
+      loadStock(ticker);
+    }
 
-</article>
-<script type="module" src="js/stock.js"></script>
+    async function loadStock(ticker) {
+      try {
+        // Fetch stock data by ticker
+        const { data, error } = await supabase
+          .from('research')
+          .select('*')
+          .eq('ticker', ticker)
+          .single();
+
+        if (error) throw error;
+
+        if (!data) {
+          throw new Error('Stock not found');
+        }
+
+        // Update page title
+        document.title = `${data.company} (${data.ticker}) | QMI`;
+
+        // Display company name
+        document.getElementById('company').textContent = data.company;
+
+        // Display meta info
+        const metaEl = document.getElementById('meta');
+        metaEl.innerHTML = `
+          <span class="ticker">${data.ticker}</span>
+          <span class="dot"></span>
+          <span>${data.country}</span>
+          <span class="dot"></span>
+          <span>${formatDate(data.created_at)}</span>
+        `;
+
+        // Display banner if exists
+        if (data.banner_url) {
+          const bannerEl = document.getElementById('banner');
+          bannerEl.src = data.banner_url;
+          bannerEl.alt = data.company;
+          bannerEl.classList.add('show');
+        }
+
+        // Display content (HTML)
+        if (data.content) {
+          document.getElementById('content').innerHTML = data.content;
+        } else {
+          document.getElementById('content').innerHTML = '<p>No content available.</p>';
+        }
+
+        // Display sources if they exist
+        if (data.sources && Array.isArray(data.sources)) {
+          const sourcesEl = document.getElementById('sources');
+          sourcesEl.innerHTML = data.sources.map(source => `
+            <li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.name}</a></li>
+          `).join('');
+        } else if (data.sources) {
+          // If sources is a string, try to parse it
+          try {
+            const parsedSources = JSON.parse(data.sources);
+            const sourcesEl = document.getElementById('sources');
+            sourcesEl.innerHTML = parsedSources.map(source => `
+              <li><a href="${source.url}" target="_blank" rel="noopener noreferrer">${source.name}</a></li>
+            `).join('');
+          } catch (e) {
+            document.querySelector('.sources-section').style.display = 'none';
+          }
+        } else {
+          document.querySelector('.sources-section').style.display = 'none';
+        }
+
+      } catch (error) {
+        console.error('Error loading stock:', error);
+        document.querySelector('.article').innerHTML = `
+          <div class="loading">
+            <h2>Error Loading Stock</h2>
+            <p>${error.message}</p>
+            <p><a href="index.html">Go back to home</a></p>
+          </div>
+        `;
+      }
+    }
+
+    function formatDate(dateString) {
+      const date = new Date(dateString);
+      return date.toLocaleDateString('en-US', { 
+        month: 'long', 
+        day: 'numeric', 
+        year: 'numeric' 
+      });
+    }
+  </script>
 </body>
 </html>
