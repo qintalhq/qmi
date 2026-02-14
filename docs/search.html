@@ -1,15 +1,395 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Search</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search | QMI</title>
+  <link rel="stylesheet" href="og.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      color: #000000;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 2rem;
+      background: #ffffff;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-link {
+      color: #666666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover {
+      color: #000000;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 2rem;
+    }
+
+    /* Search Header */
+    .search-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .search-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .search-header p {
+      color: #666666;
+      font-size: 1.1rem;
+    }
+
+    /* Search Box */
+    .search-box {
+      max-width: 700px;
+      margin: 0 auto 3rem;
+    }
+
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      gap: 0.75rem;
+    }
+
+    #q {
+      flex: 1;
+      padding: 1rem 1rem 1rem 3rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+
+    #q:focus {
+      outline: none;
+      border-color: #000000;
+      box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #999999;
+      pointer-events: none;
+    }
+
+    .search-btn {
+      padding: 1rem 2rem;
+      background: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      white-space: nowrap;
+    }
+
+    .search-btn:hover:not(:disabled) {
+      background: #1a1a1a;
+    }
+
+    .search-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Filters */
+    .filters {
+      max-width: 700px;
+      margin: 0 auto 2rem;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-select {
+      flex: 1;
+      min-width: 200px;
+      padding: 0.75rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .filter-select:focus {
+      outline: none;
+      border-color: #000000;
+    }
+
+    /* Results Stats */
+    .results-stats {
+      margin-bottom: 2rem;
+      color: #666666;
+      font-size: 0.95rem;
+    }
+
+    /* Results */
+    #res {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .result-card {
+      border: 1px solid #e5e5e5;
+      border-radius: 8px;
+      padding: 1.5rem;
+      background: #ffffff;
+      transition: all 0.2s;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .result-card:hover {
+      border-color: #000000;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .result-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 0.75rem;
+    }
+
+    .result-meta {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .result-badge {
+      padding: 0.25rem 0.75rem;
+      background: #f5f5f5;
+      border: 1px solid #e5e5e5;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      color: #666666;
+    }
+
+    .result-description {
+      color: #666666;
+      font-size: 0.95rem;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    .result-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #f0f0f0;
+      font-size: 0.875rem;
+      color: #999999;
+    }
+
+    .view-link {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Loading */
+    .loading {
+      text-align: center;
+      padding: 3rem;
+      color: #666666;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      border: 3px solid #f0f0f0;
+      border-top-color: #000000;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Empty State */
+    .empty-state {
+      text-align: center;
+      padding: 4rem 2rem;
+      color: #666666;
+    }
+
+    .empty-state-icon {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      opacity: 0.3;
+    }
+
+    .empty-state h3 {
+      font-size: 1.5rem;
+      color: #000000;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 2rem;
+      text-align: center;
+      background: #fafafa;
+      margin-top: 4rem;
+    }
+
+    .footer p {
+      color: #666666;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .search-wrapper {
+        flex-direction: column;
+      }
+
+      #res {
+        grid-template-columns: 1fr;
+      }
+
+      .filters {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
+  <!-- Header -->
+  <div class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">QMI</a>
+      <nav class="nav-links">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="search.html" class="nav-link">Search</a>
+        <a href="login.html" class="nav-link">Login</a>
+      </nav>
+    </div>
+  </div>
 
-<input id="q" placeholder="Search company">
-<button onclick="search()">Search</button>
-<div id="res"></div>
+  <!-- Container -->
+  <div class="container">
+    <!-- Header -->
+    <div class="search-header">
+      <h1>Search Companies</h1>
+      <p>Independent equity research and market intelligence</p>
+    </div>
 
-<script type="module" src="js/search.js"></script>
+    <!-- Search Box -->
+    <div class="search-box">
+      <div class="search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input 
+          id="q" 
+          type="text" 
+          placeholder="Search by company name or country..." 
+          autocomplete="off"
+        >
+        <button class="search-btn" onclick="search()">
+          <span id="searchBtnText">Search</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="filters">
+      <select class="filter-select" id="regionFilter" onchange="applyFilters()">
+        <option value="">All Countries</option>
+        <option value="united states">United States</option>
+        <option value="india">India</option>
+        <option value="china">China</option>
+        <option value="united kingdom">United Kingdom</option>
+        <option value="germany">Germany</option>
+      </select>
+
+      <select class="filter-select" id="sortFilter" onchange="applyFilters()">
+        <option value="recent">Most Recent</option>
+        <option value="alphabetical">A to Z</option>
+      </select>
+    </div>
+
+    <!-- Stats -->
+    <div class="results-stats" id="resultsStats"></div>
+
+    <!-- Results -->
+    <div id="res"></div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <p><strong>Qintal Market Intelligence (QMI)</strong></p>
+    <p>All content is for informational purposes only and not investment advice.</p>
+    <p>© 2026 Qintal Market Intelligence</p>
+  </div>
+
+  <script type="module" src="js/search.js"></script>
 </body>
 </html>
