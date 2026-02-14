@@ -4,7 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>QMI - Qintal Market Intelligence</title>
-  <link rel="stylesheet" href="stye.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
     * {
       margin: 0;
@@ -13,287 +16,350 @@
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #ffffff;
-      color: #000000;
+      color: #0a0e27;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Header */
-    header {
-      border-bottom: 1px solid #e5e5e5;
-      padding: 1rem 2rem;
-      background: #ffffff;
+    /* Navigation */
+    nav {
+      background: rgba(10, 14, 39, 0.98);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+      padding: 1.5rem 0;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
-    header .header-content {
+    .nav-container {
       max-width: 1400px;
       margin: 0 auto;
+      padding: 0 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    header h1 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 900;
+      color: #ffffff;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      font-family: 'Playfair Display', serif;
     }
 
-    nav {
+    .nav-links {
       display: flex;
-      gap: 1.5rem;
+      gap: 2.5rem;
       align-items: center;
     }
 
-    nav a {
-      color: #666666;
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.85);
       text-decoration: none;
-      font-size: 0.95rem;
       font-weight: 500;
-      transition: color 0.2s;
+      font-size: 0.95rem;
+      transition: all 0.3s;
+      letter-spacing: 0.02em;
     }
 
-    nav a:hover {
-      color: #000000;
-    }
-
-    /* Banner */
-    .banner {
-      width: 100%;
-      max-height: 400px;
-      overflow: hidden;
-      position: relative;
-      background: #f5f5f5;
-    }
-
-    .banner img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .banner-overlay {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
-      padding: 2rem;
-      color: white;
-    }
-
-    .banner-overlay h2 {
-      font-size: 2rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-    }
-
-    .banner-overlay p {
-      font-size: 1.1rem;
-      opacity: 0.95;
+    .nav-links a:hover {
+      color: #a5b4fc;
     }
 
     /* Hero Section */
     .hero {
-      background: #fafafa;
-      border-bottom: 1px solid #e5e5e5;
-      padding: 3rem 2rem;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1629 100%);
+      color: #ffffff;
+      padding: 8rem 2rem 6rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.2) 0%, transparent 50%),
+        radial-gradient(circle at 80% 70%, rgba(20, 184, 166, 0.2) 0%, transparent 50%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: 
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(99, 102, 241, 0.03) 2px, rgba(99, 102, 241, 0.03) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(99, 102, 241, 0.03) 2px, rgba(99, 102, 241, 0.03) 4px);
     }
 
     .hero-content {
-      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
-    .hero h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.2;
+    .hero-badge {
+      display: inline-block;
+      padding: 0.5rem 1.5rem;
+      background: rgba(99, 102, 241, 0.15);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: 2rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
     }
 
-    .hero p {
-      font-size: 1.15rem;
-      color: #666666;
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1.25rem, 3vw, 1.75rem);
+      font-weight: 300;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+      letter-spacing: 0.01em;
+    }
+
+    .hero-description {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      opacity: 0.75;
+      max-width: 750px;
+      margin: 0 auto 3rem;
       line-height: 1.7;
     }
 
-    /* Container */
+    .hero-cta {
+      display: inline-flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 1.1rem 2.5rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+      color: #ffffff;
+      box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(99, 102, 241, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+
+    /* Featured Section */
+    .featured-section {
+      padding: 5rem 2rem;
+      background: #fafafa;
+    }
+
     .container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 4rem 2rem;
-    }
-
-    /* Section */
-    section {
-      margin-bottom: 5rem;
     }
 
     .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 2px solid #000000;
+      text-align: center;
+      margin-bottom: 4rem;
     }
 
-    .section-header h3 {
-      font-size: 1.75rem;
+    .section-badge {
+      display: inline-block;
+      padding: 0.4rem 1.2rem;
+      background: linear-gradient(135deg, #6366f1, #818cf8);
+      color: #ffffff;
+      border-radius: 50px;
+      font-size: 0.8rem;
       font-weight: 700;
-      margin: 0;
+      margin-bottom: 1.5rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
 
-    .view-all {
-      color: #666666;
-      text-decoration: none;
-      font-size: 0.95rem;
-      font-weight: 500;
-      transition: color 0.2s;
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 900;
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
-    .view-all:hover {
-      color: #000000;
+    .section-subtitle {
+      font-size: 1.25rem;
+      color: #64748b;
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.7;
     }
 
-    /* Grid */
-    .grid {
+    /* Cards Grid */
+    .cards-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 2.5rem;
     }
 
-    /* Card */
     .card {
-      display: block;
-      border: 1px solid #e5e5e5;
-      border-radius: 8px;
-      overflow: hidden;
       background: #ffffff;
-      transition: all 0.3s ease;
+      border-radius: 16px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       text-decoration: none;
       color: inherit;
-      height: 100%;
+      display: block;
+      border: 1px solid #e5e7eb;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     }
 
     .card:hover {
-      border-color: #000000;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-      transform: translateY(-4px);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(99, 102, 241, 0.15);
+      border-color: #6366f1;
     }
 
     .card-content {
-      padding: 1.75rem;
+      padding: 2.5rem;
     }
 
     .card-header {
       display: flex;
       justify-content: space-between;
       align-items: start;
-      margin-bottom: 1rem;
-      gap: 1rem;
+      margin-bottom: 1.5rem;
+      gap: 1.5rem;
     }
 
     .card-title {
-      font-size: 1.35rem;
+      font-size: 1.75rem;
       font-weight: 700;
       line-height: 1.3;
-      margin-bottom: 0.25rem;
+      letter-spacing: -0.01em;
     }
 
     .card-ticker {
-      font-size: 0.875rem;
-      font-weight: 700;
-      color: #000000;
-      background: #f5f5f5;
-      padding: 0.35rem 0.9rem;
-      border-radius: 4px;
+      background: linear-gradient(135deg, #0a0e27, #1a1f3a);
+      color: #ffffff;
+      padding: 0.5rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 800;
+      font-size: 0.9rem;
       white-space: nowrap;
-      border: 1px solid #e5e5e5;
+      letter-spacing: 0.05em;
     }
 
     .card-meta {
       display: flex;
-      gap: 0.75rem;
+      gap: 1rem;
       align-items: center;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
       font-size: 0.9rem;
-      color: #666666;
-    }
-
-    .card-meta span {
-      display: inline-flex;
-      align-items: center;
+      color: #64748b;
     }
 
     .card-meta .dot {
       width: 3px;
       height: 3px;
-      background: #cccccc;
+      background: #cbd5e1;
       border-radius: 50%;
-      margin: 0 0.5rem;
     }
 
     .card-excerpt {
-      color: #333333;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
+      color: #1e293b;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+      font-size: 1.05rem;
     }
 
     .card-footer {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-top: 1.25rem;
-      border-top: 1px solid #f0f0f0;
+      padding-top: 1.5rem;
+      border-top: 1px solid #f1f5f9;
     }
 
     .card-date {
-      font-size: 0.875rem;
-      color: #999999;
+      font-size: 0.9rem;
+      color: #94a3b8;
     }
 
     .card-arrow {
-      color: #000000;
-      font-weight: 600;
-      font-size: 0.9rem;
+      color: #6366f1;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: transform 0.3s;
     }
 
-    /* Featured Badge */
-    .featured-badge {
-      display: inline-block;
-      background: #000000;
-      color: #ffffff;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 0.75rem;
+    .card:hover .card-arrow {
+      transform: translateX(5px);
     }
 
     /* Loading */
     .loading {
       text-align: center;
-      padding: 4rem 2rem;
-      color: #666666;
+      padding: 5rem 2rem;
+      color: #64748b;
     }
 
     .spinner {
       display: inline-block;
       width: 50px;
       height: 50px;
-      border: 4px solid #f0f0f0;
-      border-top-color: #000000;
+      border: 4px solid #f1f5f9;
+      border-top-color: #6366f1;
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
       margin-bottom: 1.5rem;
@@ -303,139 +369,178 @@
       to { transform: rotate(360deg); }
     }
 
-    /* Empty State */
-    .empty {
-      text-align: center;
-      padding: 4rem 2rem;
-      color: #666666;
-    }
-
-    .empty h4 {
-      font-size: 1.25rem;
-      color: #000000;
-      margin-bottom: 0.5rem;
-    }
-
     /* Footer */
-    .footer {
-      border-top: 1px solid #e5e5e5;
-      padding: 3rem 2rem;
+    footer {
+      background: #0a0e27;
+      color: #ffffff;
+      padding: 4rem 2rem;
       text-align: center;
-      background: #fafafa;
+      border-top: 1px solid rgba(99, 102, 241, 0.2);
     }
 
-    .footer p {
-      color: #666666;
-      font-size: 0.9rem;
+    .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #a5b4fc, #2dd4bf);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.95rem;
       margin-bottom: 0.75rem;
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    .footer strong {
-      color: #000000;
+    footer strong {
+      color: #ffffff;
       font-weight: 600;
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      header {
-        padding: 1rem 1.5rem;
-      }
-
-      .banner {
-        max-height: 250px;
-      }
-
-      .banner-overlay h2 {
-        font-size: 1.5rem;
-      }
-
       .hero {
-        padding: 2.5rem 1.5rem;
+        padding: 5rem 1.5rem 4rem;
       }
 
-      .hero h2 {
-        font-size: 2rem;
-      }
-
-      .container {
-        padding: 3rem 1.5rem;
-      }
-
-      .grid {
+      .cards-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-links {
         gap: 1.5rem;
       }
 
-      .section-header {
+      .hero-cta {
         flex-direction: column;
-        align-items: flex-start;
-        gap: 0.5rem;
+        width: 100%;
+      }
+
+      .btn {
+        width: 100%;
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
-      <h1>QMI</h1>
-      <nav>
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="logo">QMI</a>
+      <div class="nav-links">
         <a href="search.html">Search</a>
         <a href="login.html">Login</a>
-      </nav>
+      </div>
     </div>
-  </header>
-
-  <!-- Banner -->
-  <div class="banner" id="banner"></div>
+  </nav>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h2>Global Stock Research & Intelligence</h2>
-      <p>
-        Independent, long-form analysis on companies worldwide.
-        Built for long-term investors and decision-makers.
+      <div class="hero-badge">Independent Research</div>
+      <h1>Market Intelligence<br>Redefined</h1>
+      <p class="hero-subtitle">Data-driven equity research and analysis for the modern investor</p>
+      <p class="hero-description">
+        Deep-dive analysis on global companies. Institutional-grade research made accessible. 
+        No hype, just comprehensive intelligence.
       </p>
+      <div class="hero-cta">
+        <a href="search.html" class="btn btn-primary">
+          Explore Research
+          <span>→</span>
+        </a>
+        <a href="#latest" class="btn btn-secondary">
+          Latest Reports
+          <span>↓</span>
+        </a>
+      </div>
     </div>
   </section>
 
-  <!-- Main Container -->
-  <main class="container">
-    <!-- Featured Research -->
-    <section>
+  <!-- Latest Research -->
+  <section class="featured-section" id="latest">
+    <div class="container">
       <div class="section-header">
-        <h3>Featured Research</h3>
-        <a href="search.html" class="view-all">View all →</a>
+        <div class="section-badge">Latest Research</div>
+        <h2 class="section-title">Recent Analysis</h2>
+        <p class="section-subtitle">
+          Comprehensive research reports on companies shaping the future of markets
+        </p>
       </div>
-      <div class="grid" id="featured"></div>
-    </section>
 
-    <!-- Latest Research -->
-    <section>
-      <div class="section-header">
-        <h3>Latest Research</h3>
-        <a href="search.html" class="view-all">View all →</a>
-      </div>
-      <div class="grid" id="latest"></div>
-    </section>
-  </main>
+      <div class="cards-grid" id="research-grid"></div>
+    </div>
+  </section>
 
   <!-- Footer -->
-  <footer class="footer">
-    <p><strong>Qintal Market Intelligence (QMI)</strong></p>
+  <footer>
+    <div class="footer-logo">QMI</div>
+    <p><strong>Qintal Market Intelligence</strong></p>
     <p>
-      QMI provides independent equity research and market intelligence.
-      All content is for informational purposes only and not investment advice.
+      Independent equity research and market intelligence platform.<br>
+      All content is for informational and educational purposes only.
     </p>
-    <p>© 2026 Qintal Market Intelligence</p>
+    <p style="margin-top: 2rem; opacity: 0.6;">
+      © 2026 Qintal Market Intelligence. All Rights Reserved.
+    </p>
   </footer>
 
   <script type="module">
     import { supabase } from "./js/supabase.js";
 
-    // Format date
+    async function loadResearch() {
+      const grid = document.getElementById('research-grid');
+      grid.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading research...</p></div>';
+
+      try {
+        const { data, error } = await supabase
+          .from('research')
+          .select('*')
+          .order('created_at', { ascending: false })
+          .limit(12);
+
+        if (error) throw error;
+
+        if (data && data.length > 0) {
+          grid.innerHTML = data.map(item => `
+            <a href="stock.html?ticker=${item.ticker}" class="card">
+              <div class="card-content">
+                <div class="card-header">
+                  <div class="card-title">${item.company}</div>
+                  <div class="card-ticker">${item.ticker}</div>
+                </div>
+                <div class="card-meta">
+                  <span>${item.country}</span>
+                  <span class="dot"></span>
+                  <span>${formatDate(item.created_at)}</span>
+                </div>
+                <div class="card-excerpt">${truncate(item.content, 160)}</div>
+                <div class="card-footer">
+                  <span class="card-date">Read full analysis</span>
+                  <span class="card-arrow">→</span>
+                </div>
+              </div>
+            </a>
+          `).join('');
+        } else {
+          grid.innerHTML = '<div class="loading"><p>No research available yet. Check back soon!</p></div>';
+        }
+      } catch (error) {
+        console.error('Error:', error);
+        grid.innerHTML = '<div class="loading" style="color:#ef4444;"><p>Error loading research. Please try again later.</p></div>';
+      }
+    }
+
+    function truncate(text, length) {
+      const clean = text.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim();
+      return clean.length > length ? clean.substring(0, length) + '...' : clean;
+    }
+
     function formatDate(dateString) {
       const date = new Date(dateString);
       return date.toLocaleDateString('en-US', { 
@@ -445,142 +550,7 @@
       });
     }
 
-    // Truncate text
-    function truncate(text, length) {
-      if (!text) return '';
-      if (text.length <= length) return text;
-      return text.substring(0, length) + '...';
-    }
-
-    // Shuffle array
-    function shuffleArray(array) {
-      const shuffled = [...array];
-      for (let i = shuffled.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-      }
-      return shuffled;
-    }
-
-    // Create card HTML
-    function createCard(item, isFeatured = false) {
-      return `
-        <a href="https://qmi.pages.dev/stock?ticker=${item.ticker}" class="card">
-          <div class="card-content">
-            ${isFeatured ? '<div class="featured-badge">Featured</div>' : ''}
-            <div class="card-header">
-              <div>
-                <div class="card-title">${item.company}</div>
-              </div>
-              <div class="card-ticker">${item.ticker}</div>
-            </div>
-            <div class="card-meta">
-              <span>${item.country}</span>
-              <span class="dot"></span>
-              <span>${formatDate(item.created_at)}</span>
-            </div>
-            <div class="card-excerpt">${truncate(item.research, 180)}</div>
-            <div class="card-footer">
-              <span class="card-date">Read analysis</span>
-              <span class="card-arrow">→</span>
-            </div>
-          </div>
-        </a>
-      `;
-    }
-
-    // Load Banner
-    async function loadBanner() {
-      const container = document.getElementById('banner');
-      
-      try {
-        // Get the first entry with a banner_url
-        const { data, error } = await supabase
-          .from('research')
-          .select('*')
-          .not('banner_url', 'is', null)
-          .limit(1)
-          .single();
-
-        if (error) throw error;
-
-        if (data && data.banner_url) {
-          container.innerHTML = `
-            <img src="${data.banner_url}" alt="${data.company}">
-            <div class="banner-overlay">
-              <h2>${data.company}</h2>
-              <p>${truncate(data.research, 120)}</p>
-            </div>
-          `;
-        } else {
-          container.style.display = 'none';
-        }
-
-      } catch (error) {
-        console.error('Error loading banner:', error);
-        container.style.display = 'none';
-      }
-    }
-
-    // Load Featured Research (Random)
-    async function loadFeatured() {
-      const container = document.getElementById('featured');
-      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading featured research...</p></div>';
-      
-      try {
-        // Get all entries and randomly select 3
-        const { data, error } = await supabase
-          .from('research')
-          .select('*')
-          .order('created_at', { ascending: false });
-
-        if (error) throw error;
-
-        if (data && data.length > 0) {
-          // Randomly select up to 3 entries
-          const randomEntries = shuffleArray(data).slice(0, 3);
-          container.innerHTML = randomEntries.map(item => createCard(item, true)).join('');
-        } else {
-          container.innerHTML = '<div class="empty"><h4>No featured research yet</h4><p>Check back soon for new analysis</p></div>';
-        }
-
-      } catch (error) {
-        console.error('Error loading featured:', error);
-        container.innerHTML = '<div class="empty"><h4>Error loading featured research</h4></div>';
-      }
-    }
-
-    // Load Latest Research
-    async function loadLatest() {
-      const container = document.getElementById('latest');
-      container.innerHTML = '<div class="loading"><div class="spinner"></div><p>Loading latest research...</p></div>';
-      
-      try {
-        // Get latest 9 entries
-        const { data, error } = await supabase
-          .from('research')
-          .select('*')
-          .order('created_at', { ascending: false })
-          .limit(9);
-
-        if (error) throw error;
-
-        if (data && data.length > 0) {
-          container.innerHTML = data.map(item => createCard(item, false)).join('');
-        } else {
-          container.innerHTML = '<div class="empty"><h4>No research available yet</h4><p>New analysis coming soon</p></div>';
-        }
-
-      } catch (error) {
-        console.error('Error loading latest:', error);
-        container.innerHTML = '<div class="empty"><h4>Error loading research</h4></div>';
-      }
-    }
-
-    // Load all on page load
-    loadBanner();
-    loadFeatured();
-    loadLatest();
+    loadResearch();
   </script>
 </body>
 </html>
