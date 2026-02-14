@@ -1,0 +1,109 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont;
+}
+
+body {
+  background: #0b0f14;
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.auth-container {
+  width: 360px;
+  background: #121822;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.4);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 13px;
+  opacity: .7;
+  margin-bottom: 20px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.tab-btn.active {
+  color: #fff;
+  border-bottom: 2px solid #4f9cff;
+}
+
+.auth-form {
+  display: none;
+}
+
+.auth-form.active {
+  display: block;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  background: #0b0f14;
+  border: 1px solid #222;
+  color: #fff;
+  border-radius: 8px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #4f9cff;
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: .6;
+}
+
+.google-btn {
+  margin-top: 12px;
+  background: #fff;
+  color: #000;
+}
+
+.alert {
+  display: none;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.alert.error {
+  background: #2a1212;
+  color: #ff6b6b;
+}
+
+.alert.success {
+  background: #0f2a1a;
+  color: #4cff9f;
+}
