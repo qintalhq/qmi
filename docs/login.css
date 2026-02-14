@@ -1,109 +1,266 @@
 * {
-  box-sizing: border-box;
-  font-family: system-ui, -apple-system, BlinkMacSystemFont;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-body {
-  background: #0b0f14;
-  color: #fff;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      background: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-.auth-container {
-  width: 360px;
-  background: #121822;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 10px 30px rgba(0,0,0,.4);
-}
+    /* Header */
+    .header {
+      border-bottom: 1px solid #e5e5e5;
+      padding: 1rem 2rem;
+      background: #ffffff;
+    }
 
-h1 {
-  text-align: center;
-  margin-bottom: 4px;
-}
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-.subtitle {
-  text-align: center;
-  font-size: 13px;
-  opacity: .7;
-  margin-bottom: 20px;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #000000;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
 
-.tabs {
-  display: flex;
-  margin-bottom: 20px;
-}
+    .header-link {
+      color: #666666;
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
 
-.tab-btn {
-  flex: 1;
-  padding: 10px;
-  background: transparent;
-  border: none;
-  color: #aaa;
-  cursor: pointer;
-}
+    .header-link:hover {
+      color: #000000;
+    }
 
-.tab-btn.active {
-  color: #fff;
-  border-bottom: 2px solid #4f9cff;
-}
+    /* Main Container */
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
 
-.auth-form {
-  display: none;
-}
+    .box {
+      width: 100%;
+      max-width: 400px;
+      padding: 0;
+    }
 
-.auth-form.active {
-  display: block;
-}
+    .box-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
 
-input {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 12px;
-  background: #0b0f14;
-  border: 1px solid #222;
-  color: #fff;
-  border-radius: 8px;
-}
+    .box h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 0.5rem;
+    }
 
-button {
-  width: 100%;
-  padding: 12px;
-  background: #4f9cff;
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-}
+    .box-subtitle {
+      color: #666666;
+      font-size: 0.95rem;
+    }
 
-button:disabled {
-  opacity: .6;
-}
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
 
-.google-btn {
-  margin-top: 12px;
-  background: #fff;
-  color: #000;
-}
+    .tab {
+      flex: 1;
+      padding: 0.875rem 1rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: #666666;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
 
-.alert {
-  display: none;
-  padding: 10px;
-  border-radius: 8px;
-  margin-bottom: 12px;
-  font-size: 14px;
-}
+    .tab.active {
+      color: #000000;
+      border-bottom-color: #000000;
+    }
 
-.alert.error {
-  background: #2a1212;
-  color: #ff6b6b;
-}
+    .tab:hover {
+      color: #000000;
+    }
 
-.alert.success {
-  background: #0f2a1a;
-  color: #4cff9f;
-}
+    /* Form */
+    .form-container {
+      display: none;
+    }
+
+    .form-container.active {
+      display: block;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #000000;
+      font-size: 0.875rem;
+    }
+
+    input {
+      width: 100%;
+      padding: 0.75rem 0.875rem;
+      border: 1px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      transition: all 0.2s;
+      font-family: inherit;
+      background: #ffffff;
+    }
+
+    input:focus {
+      outline: none;
+      border-color: #000000;
+    }
+
+    input::placeholder {
+      color: #999999;
+    }
+
+    button {
+      width: 100%;
+      padding: 0.875rem 1rem;
+      background: #000000;
+      color: #ffffff;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+      margin-top: 0.5rem;
+    }
+
+    button:hover:not(:disabled) {
+      background: #1a1a1a;
+    }
+
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    /* Message */
+    #msg {
+      margin-top: 1rem;
+      padding: 0.875rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      text-align: center;
+      display: none;
+    }
+
+    #msg.show {
+      display: block;
+    }
+
+    #msg.error {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      color: #dc2626;
+    }
+
+    #msg.success {
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #16a34a;
+    }
+
+    /* Extra Links */
+    .extra-links {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.875rem;
+      color: #666666;
+    }
+
+    .extra-links a {
+      color: #000000;
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .footer {
+      border-top: 1px solid #e5e5e5;
+      padding: 2rem;
+      text-align: center;
+      background: #fafafa;
+      margin-top: 3rem;
+    }
+
+    .footer p {
+      color: #666666;
+      font-size: 0.875rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: #000000;
+      font-weight: 600;
+    }
+
+    /* Loading */
+    .spinner {
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 0.6s linear infinite;
+      margin-right: 0.5rem;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .header {
+        padding: 1rem 1.5rem;
+      }
+
+      .box {
+        padding: 0 1rem;
+      }
+
+      .box h2 {
+        font-size: 1.5rem;
+      }
+    }
