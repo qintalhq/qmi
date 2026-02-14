@@ -4,246 +4,124 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Search | QMI</title>
-  <link rel="stylesheet" href="stle.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
       background: #ffffff;
-      color: #000000;
+      color: #0a0e27;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    .search-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+      color: var(--white);
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    /* Header */
-    header {
-      border-bottom: 1px solid #e5e5e5;
-      padding: 1rem 2rem;
-    }
-
-    .header-content {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .logo {
-      font-size: 1.5rem;
+    .search-hero h1 {
+      font-size: 2.5rem;
       font-weight: 700;
-      color: #000000;
-      text-decoration: none;
+      margin-bottom: 1rem;
     }
 
-    .nav-link {
-      color: #666666;
-      text-decoration: none;
-      font-size: 0.95rem;
-    }
-
-    .nav-link:hover {
-      color: #000000;
-    }
-
-    /* Main */
-    main {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3rem 2rem;
-    }
-
-    h1 {
-      font-size: 2rem;
-      margin-bottom: 2rem;
-    }
-
-    /* Search Box */
     .search-box {
+      max-width: 700px;
+      margin: 2rem auto 0;
       display: flex;
-      gap: 0.5rem;
-      margin-bottom: 2rem;
-      max-width: 600px;
+      gap: 1rem;
     }
 
-    #q {
+    .search-box input {
       flex: 1;
-      padding: 0.75rem;
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
+      padding: 1rem 1.5rem;
+      border: none;
+      border-radius: 8px;
       font-size: 1rem;
       font-family: inherit;
     }
 
-    #q:focus {
-      outline: none;
-      border-color: #000000;
-    }
-
-    button {
-      padding: 0.75rem 1.5rem;
-      background: #000000;
-      color: #ffffff;
+    .search-box button {
+      padding: 1rem 2.5rem;
+      background: var(--accent);
+      color: var(--white);
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
       font-weight: 600;
       cursor: pointer;
-      font-family: inherit;
+      transition: all 0.3s;
     }
 
-    button:hover {
-      background: #1a1a1a;
+    .search-box button:hover {
+      background: var(--accent-light);
     }
 
-    button:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
+    .results-section {
+      padding: 3rem 0;
     }
 
-    /* Results */
-    #res {
+    .results-grid {
       display: grid;
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
     }
 
     .result-card {
-      display: block;
-      border: 1px solid #e5e5e5;
-      border-radius: 6px;
-      padding: 1.5rem;
-      transition: all 0.2s;
+      background: var(--white);
+      border: 1px solid var(--light-gray);
+      border-radius: 12px;
+      padding: 2rem;
+      transition: all 0.3s;
       text-decoration: none;
       color: inherit;
-      cursor: pointer;
+      display: block;
     }
 
     .result-card:hover {
-      border-color: #000000;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-      transform: translateY(-2px);
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(99, 102, 241, 0.15);
+      border-color: var(--accent);
     }
 
-    .result-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: start;
-      margin-bottom: 0.5rem;
-    }
-
-    .result-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.25rem;
-    }
-
-    .result-ticker {
-      font-size: 0.875rem;
-      font-weight: 600;
-      color: #666666;
-      background: #f5f5f5;
-      padding: 0.25rem 0.75rem;
-      border-radius: 4px;
-    }
-
-    .result-meta {
-      color: #666666;
-      font-size: 0.875rem;
-      margin-bottom: 1rem;
-    }
-
-    .result-content {
-      color: #000000;
-      line-height: 1.6;
-    }
-
-    /* Loading */
-    .loading {
-      text-align: center;
-      padding: 2rem;
-      color: #666666;
-    }
-
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 2px solid #e5e5e5;
-      border-top-color: #000000;
-      border-radius: 50%;
-      animation: spin 0.6s linear infinite;
-    }
-
-    @keyframes spin {
-      to { transform: rotate(360deg); }
-    }
-
-    /* Empty */
-    .empty {
-      text-align: center;
-      padding: 3rem;
-      color: #666666;
-    }
-
-    /* Icon */
-    .icon {
-      display: inline-block;
-      width: 1em;
-      height: 1em;
-      vertical-align: middle;
-    }
-
-    .icon-search {
-      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>') no-repeat center;
-      background-size: contain;
-    }
-
-    /* Footer */
-    footer {
-      border-top: 1px solid #e5e5e5;
-      padding: 2rem;
-      text-align: center;
-      background: #fafafa;
-      margin-top: 3rem;
-    }
-
-    footer p {
-      color: #666666;
-      font-size: 0.875rem;
-      margin-bottom: 0.5rem;
-    }
-
-    @media (max-width: 640px) {
+    @media (max-width: 768px) {
       .search-box {
         flex-direction: column;
+      }
+
+      .results-grid {
+        grid-template-columns: 1fr;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
-  <header>
-    <div class="header-content">
+  <nav>
+    <div class="nav-container">
       <a href="index.html" class="logo">QMI</a>
-      <a href="index.html" class="nav-link">Home</a>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="login.html">Login</a>
+      </div>
     </div>
-  </header>
+  </nav>
 
-  <!-- Main -->
-  <main>
+  <div class="search-hero">
     <h1>Search Companies</h1>
-    
+    <p>Independent equity research and market intelligence</p>
     <div class="search-box">
       <input id="q" type="text" placeholder="Search company name...">
       <button onclick="search()">Search</button>
     </div>
+  </div>
 
-    <div id="res"></div>
-  </main>
+  <div class="container results-section">
+    <div class="results-grid" id="res"></div>
+  </div>
 
-  <!-- Footer -->
   <footer>
     <p><strong>Qintal Market Intelligence (QMI)</strong></p>
     <p>All content is for informational purposes only and not investment advice.</p>
@@ -258,15 +136,13 @@
       const res = document.getElementById('res');
 
       if (!query) {
-        res.innerHTML = '<div class="empty">Please enter a company name to search</div>';
+        res.innerHTML = '<p style="text-align:center;color:var(--gray);padding:3rem;">Please enter a search term</p>';
         return;
       }
 
-      // Show loading
-      res.innerHTML = '<div class="loading"><div class="spinner"></div> Searching...</div>';
+      res.innerHTML = '<div style="text-align:center;padding:3rem;"><div class="spinner"></div></div>';
 
       try {
-        // Search by company name only
         const { data, error } = await supabase
           .from('research')
           .select('*')
@@ -275,58 +151,37 @@
 
         if (error) throw error;
 
-        // Display results
         if (data && data.length > 0) {
           res.innerHTML = data.map(item => `
-            <a href="https://qmi.pages.dev/stock?ticker=${item.ticker}" class="result-card">
-              <div class="result-header">
-                <div>
-                  <div class="result-title">${item.company}</div>
-                </div>
-                <div class="result-ticker">${item.ticker}</div>
+            <a href="stock.html?ticker=${item.ticker}" class="result-card">
+              <div style="display:flex;justify-content:space-between;margin-bottom:1rem;">
+                <h3 style="font-size:1.3rem;font-weight:700;">${item.company}</h3>
+                <span style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;padding:0.3rem 0.8rem;border-radius:6px;font-weight:700;font-size:0.875rem;">${item.ticker}</span>
               </div>
-              <div class="result-meta">${item.country} • ${formatDate(item.created_at)}</div>
-              <div class="result-content">${truncate(item.research, 200)}</div>
+              <p style="color:var(--gray);margin-bottom:1rem;">${item.country}</p>
+              <p style="color:var(--primary);line-height:1.6;">${truncate(item.content, 150)}</p>
             </a>
           `).join('');
         } else {
-          res.innerHTML = '<div class="empty">No companies found</div>';
+          res.innerHTML = '<p style="text-align:center;color:var(--gray);padding:3rem;">No companies found</p>';
         }
-
       } catch (error) {
-        console.error('Search error:', error);
-        res.innerHTML = `<div class="empty">Error: ${error.message}</div>`;
+        console.error('Error:', error);
+        res.innerHTML = '<p style="text-align:center;color:var(--danger);padding:3rem;">Error: ' + error.message + '</p>';
       }
     };
 
-    // Format date
-    function formatDate(dateString) {
-      const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', { 
-        year: 'numeric', 
-        month: 'short', 
-        day: 'numeric' 
-      });
-    }
-
-    // Truncate text
     function truncate(text, length) {
-      if (!text) return '';
-      if (text.length <= length) return text;
-      return text.substring(0, length) + '...';
+      const clean = text.replace(/<[^>]*>/g, '');
+      return clean.length > length ? clean.substring(0, length) + '...' : clean;
     }
 
-    // Search on Enter key
     document.getElementById('q').addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        search();
-      }
+      if (e.key === 'Enter') search();
     });
 
-    // Load all on page load
     async function loadAll() {
       const res = document.getElementById('res');
-      
       try {
         const { data, error } = await supabase
           .from('research')
@@ -338,28 +193,21 @@
 
         if (data && data.length > 0) {
           res.innerHTML = data.map(item => `
-            <a href="https://qmi.pages.dev/stock?ticker=${item.ticker}" class="result-card">
-              <div class="result-header">
-                <div>
-                  <div class="result-title">${item.company}</div>
-                </div>
-                <div class="result-ticker">${item.ticker}</div>
+            <a href="stock.html?ticker=${item.ticker}" class="result-card">
+              <div style="display:flex;justify-content:space-between;margin-bottom:1rem;">
+                <h3 style="font-size:1.3rem;font-weight:700;">${item.company}</h3>
+                <span style="background:linear-gradient(135deg,var(--accent),var(--accent-light));color:white;padding:0.3rem 0.8rem;border-radius:6px;font-weight:700;font-size:0.875rem;">${item.ticker}</span>
               </div>
-              <div class="result-meta">${item.country} • ${formatDate(item.created_at)}</div>
-              <div class="result-content">${truncate(item.research, 200)}</div>
+              <p style="color:var(--gray);margin-bottom:1rem;">${item.country}</p>
+              <p style="color:var(--primary);line-height:1.6;">${truncate(item.content, 150)}</p>
             </a>
           `).join('');
-        } else {
-          res.innerHTML = '<div class="empty">No companies yet</div>';
         }
-
       } catch (error) {
-        console.error('Load error:', error);
-        res.innerHTML = '<div class="empty">Error loading companies</div>';
+        console.error('Error:', error);
       }
     }
 
-    // Load all companies on page load
     loadAll();
   </script>
 </body>
